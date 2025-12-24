@@ -13,7 +13,8 @@ export function AboutSection() {
           </div>
           <h2 className="text-[#3a3a3a] mb-4">Expert Care You Can Trust</h2>
           <p className="text-[#7a7a7a] max-w-2xl mx-auto">
-            World-class training, decades of experience, and a deep commitment to every child's health
+            World-class training, decades of experience, and a deep commitment
+            to every child's health
           </p>
         </div>
 
@@ -23,9 +24,9 @@ export function AboutSection() {
             {/* Left Column - Doctor Photo */}
             <div className="flex">
               <div className="relative w-full rounded-2xl overflow-hidden shadow-[0px_8px_10px_0px_rgba(107,77,124,0.1),0px_20px_25px_0px_rgba(107,77,124,0.1)]">
-                <img 
-                  src="src/assets/IMAGE3.png" 
-                  alt="Dr. Vinay H. Joshi" 
+                <img
+                  src="https://res.cloudinary.com/dzq2acoyj/image/upload/v1766584299/IMAGE3_nirpyj.png"
+                  alt="Dr. Vinay H. Joshi"
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -40,7 +41,8 @@ export function AboutSection() {
                   MBBS, MD (Pediatrics), DM (Neonatology)
                 </p>
                 <p className="text-sm text-[#7a7a7a]">
-                  Fellowships in Neonatal & Perinatal Medicine, Pediatric & Cardiac Critical Care, and Transport Medicine
+                  Fellowships in Neonatal & Perinatal Medicine, Pediatric &
+                  Cardiac Critical Care, and Transport Medicine
                 </p>
               </div>
 
@@ -79,19 +81,24 @@ export function AboutSection() {
                 <div className="flex items-start gap-2">
                   <div className="w-1.5 h-1.5 rounded-full bg-[#6B4D7C] flex-shrink-0 mt-2" />
                   <p className="text-sm text-[#7a7a7a]">
-                    <span className="text-[#3a3a3a]">Consultant –</span> Neonatologist, Pediatric and Cardiac Intensivist
+                    <span className="text-[#3a3a3a]">Consultant –</span>{" "}
+                    Neonatologist, Pediatric and Cardiac Intensivist
                   </p>
                 </div>
                 <div className="flex items-start gap-2">
                   <div className="w-1.5 h-1.5 rounded-full bg-[#6B4D7C] flex-shrink-0 mt-2" />
                   <p className="text-sm text-[#7a7a7a]">
-                    <span className="text-[#3a3a3a]">President-Elect –</span> Indian Academy of Pediatrics (Mumbai Branch)
+                    <span className="text-[#3a3a3a]">President-Elect –</span>{" "}
+                    Indian Academy of Pediatrics (Mumbai Branch)
                   </p>
                 </div>
                 <div className="flex items-start gap-2">
                   <div className="w-1.5 h-1.5 rounded-full bg-[#6B4D7C] flex-shrink-0 mt-2" />
                   <p className="text-sm text-[#7a7a7a]">
-                    <span className="text-[#3a3a3a]">Honorary Consultant –</span> Nowrosjee Wadia Hospital, Mumbai
+                    <span className="text-[#3a3a3a]">
+                      Honorary Consultant –
+                    </span>{" "}
+                    Nowrosjee Wadia Hospital, Mumbai
                   </p>
                 </div>
               </div>
@@ -99,22 +106,25 @@ export function AboutSection() {
               {/* Quote */}
               <div className="mb-6 pl-4 border-l-3 border-[#6B4D7C] bg-[#FFF8F9] rounded-r-xl p-4">
                 <p className="text-[#3a3a3a] italic leading-relaxed mb-2">
-                  "Every child deserves the best start in life - my goal is to make sure they not only survive but thrive."
+                  "Every child deserves the best start in life - my goal is to
+                  make sure they not only survive but thrive."
                 </p>
                 <p className="text-xs text-[#6B4D7C]">- Dr. Vinay H. Joshi</p>
               </div>
 
               {/* Areas of Expertise */}
               <div>
-                <p className="text-sm text-[#3a3a3a] mb-3">Areas of Expertise:</p>
+                <p className="text-sm text-[#3a3a3a] mb-3">
+                  Areas of Expertise:
+                </p>
                 <div className="flex flex-wrap gap-2">
                   {[
-                    'Neonatal Intensive Care',
-                    'Pediatric Critical Care',
-                    'Cardiac Intensive Care',
-                    'Functional Echocardiography',
-                    'Ventilation & ECMO',
-                    'High-Risk Newborn Care'
+                    "Neonatal Intensive Care",
+                    "Pediatric Critical Care",
+                    "Cardiac Intensive Care",
+                    "Functional Echocardiography",
+                    "Ventilation & ECMO",
+                    "High-Risk Newborn Care",
                   ].map((interest, index) => (
                     <span
                       key={index}

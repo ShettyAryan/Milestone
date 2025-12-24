@@ -69,17 +69,17 @@ export function HeroSection() {
               <div className="flex items-center gap-4">
                 <div className="flex -space-x-3">
                   <img
-                    src="src\assets\ec901f1c0d6bdc3abb3b7f2578c96a444ee001e2.png"
+                    src="https://res.cloudinary.com/dzq2acoyj/image/upload/v1766586676/f578f9c2a181ef669150341163e63e6e9da01878_bvo505.jpg"
                     alt=""
                     className="w-11 h-11 rounded-full border-3 border-white object-cover shadow-md"
                   />
                   <img
-                    src="src\assets\f578f9c2a181ef669150341163e63e6e9da01878.png"
+                    src="https://res.cloudinary.com/dzq2acoyj/image/upload/v1766586676/ec901f1c0d6bdc3abb3b7f2578c96a444ee001e2_wtplqk.jpg"
                     alt=""
                     className="w-11 h-11 rounded-full border-3 border-white object-cover shadow-md"
                   />
                   <img
-                    src="src\assets\410c340aa057242400c608368f918307cdd72438.png"
+                    src="https://res.cloudinary.com/dzq2acoyj/image/upload/v1766586676/410c340aa057242400c608368f918307cdd72438_caa5d1.jpg"
                     alt=""
                     className="w-11 h-11 rounded-full border-3 border-white object-cover shadow-md"
                   />
@@ -118,7 +118,7 @@ export function HeroSection() {
             {/* Main Image */}
             <div className="rounded-3xl overflow-hidden shadow-[0_20px_60px_rgba(107,77,124,0.25)] hover:shadow-[0_25px_70px_rgba(107,77,124,0.35)] transition-shadow duration-500">
               <img
-                src="src\assets\IMAGE1.png"
+                src="https://res.cloudinary.com/dzq2acoyj/image/upload/v1766584317/IMAGE1_bkqhnu.png"
                 alt="Doctor with child"
                 className="w-full h-[480px] object-cover"
               />
