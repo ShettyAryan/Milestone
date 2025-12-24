@@ -3,7 +3,7 @@ import { Users, Heart, Award, Building2, Stethoscope, TrendingUp } from 'lucide-
 const impactStats = [
   {
     icon: Users,
-    number: '25+',
+    number: '30+',
     label: 'Years of Excellence',
     sublabel: 'Neonatal & Pediatric Care'
   },

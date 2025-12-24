@@ -1,5 +1,5 @@
 import { GraduationCap, Globe, Heart, Stethoscope, Award, Building } from 'lucide-react';
-import drJoshiImg from "figma:asset/3666d65242996cb80dfdb370778977810f824343.png";
+
 
 export function AboutSection() {
   return (
@@ -24,7 +24,7 @@ export function AboutSection() {
             <div className="flex">
               <div className="relative w-full rounded-2xl overflow-hidden shadow-[0px_8px_10px_0px_rgba(107,77,124,0.1),0px_20px_25px_0px_rgba(107,77,124,0.1)]">
                 <img 
-                  src={drJoshiImg} 
+                  src="src/assets/IMAGE3.png" 
                   alt="Dr. Vinay H. Joshi" 
                   className="w-full h-full object-cover"
                 />

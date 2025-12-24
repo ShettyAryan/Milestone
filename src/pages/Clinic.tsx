@@ -44,6 +44,7 @@ const services = [
 export default function Clinic() {
   return (
     <div className="pt-8">
+      <GallerySection />
       {/* About Clinic Section */}
       <section className="py-16 px-4 bg-white">
         <div className="max-w-7xl mx-auto">
@@ -52,9 +53,12 @@ export default function Clinic() {
               <div className="w-2 h-2 rounded-full bg-[#6B4D7C]" />
               <span className="text-sm text-[#6B4D7C]">About Us</span>
             </div>
-            <h2 className="text-[#3a3a3a] mb-4">Welcome to Milestones Child Clinic</h2>
+            <h2 className="text-[#3a3a3a] mb-4">
+              Welcome to Milestones Child Clinic
+            </h2>
             <p className="text-[#7a7a7a] max-w-3xl mx-auto">
-              A welcoming, child-friendly environment designed to make every visit comfortable and stress-free
+              A welcoming, child-friendly environment designed to make every
+              visit comfortable and stress-free
             </p>
           </div>
 
@@ -64,21 +68,34 @@ export default function Clinic() {
               <h3 className="text-[#3a3a3a] mb-6">About Our Clinic</h3>
               <div className="space-y-4 text-[#7a7a7a] text-sm leading-relaxed">
                 <p>
-                  Milestones Child Clinic is a state-of-the-art pediatric facility located in the heart of Mumbai. Our clinic is designed with children in mind, featuring bright, cheerful spaces that help young patients feel comfortable and at ease.
+                  Milestones Child Clinic is a state-of-the-art pediatric
+                  facility located in the heart of Mumbai. Our clinic is
+                  designed with children in mind, featuring bright, cheerful
+                  spaces that help young patients feel comfortable and at ease.
                 </p>
                 <p>
-                  We maintain the highest standards of hygiene and safety, with modern equipment and a dedicated team of healthcare professionals committed to providing exceptional care for your child.
+                  We maintain the highest standards of hygiene and safety, with
+                  modern equipment and a dedicated team of healthcare
+                  professionals committed to providing exceptional care for your
+                  child.
                 </p>
                 <div className="pt-4 border-t border-[rgba(107,77,124,0.1)]">
-                  <h4 className="text-[#3a3a3a] mb-3">Our Facilities Include:</h4>
+                  <h4 className="text-[#3a3a3a] mb-3">
+                    Our Facilities Include:
+                  </h4>
                   <ul className="space-y-2">
                     <li className="flex items-start gap-2">
                       <div className="w-1.5 h-1.5 rounded-full bg-[#6B4D7C] mt-2 flex-shrink-0" />
-                      <span>Modern examination rooms with child-friendly decor</span>
+                      <span>
+                        Modern examination rooms with child-friendly decor
+                      </span>
                     </li>
                     <li className="flex items-start gap-2">
                       <div className="w-1.5 h-1.5 rounded-full bg-[#6B4D7C] mt-2 flex-shrink-0" />
-                      <span>Dedicated vaccination room with proper cold chain storage</span>
+                      <span>
+                        Dedicated vaccination room with proper cold chain
+                        storage
+                      </span>
                     </li>
                     <li className="flex items-start gap-2">
                       <div className="w-1.5 h-1.5 rounded-full bg-[#6B4D7C] mt-2 flex-shrink-0" />
@@ -86,7 +103,9 @@ export default function Clinic() {
                     </li>
                     <li className="flex items-start gap-2">
                       <div className="w-1.5 h-1.5 rounded-full bg-[#6B4D7C] mt-2 flex-shrink-0" />
-                      <span>Private consultation spaces for sensitive discussions</span>
+                      <span>
+                        Private consultation spaces for sensitive discussions
+                      </span>
                     </li>
                     <li className="flex items-start gap-2">
                       <div className="w-1.5 h-1.5 rounded-full bg-[#6B4D7C] mt-2 flex-shrink-0" />
@@ -110,22 +129,34 @@ export default function Clinic() {
                   <div className="flex justify-between items-center py-3 border-b border-[rgba(107,77,124,0.1)]">
                     <span className="text-[#3a3a3a]">Monday - Friday</span>
                     <div className="text-right">
-                      <span className="text-[#6B4D7C] block">7:00 PM - 9:00 PM</span>
-                      <span className="text-[#7a7a7a] text-xs">By Appointment Only</span>
+                      <span className="text-[#6B4D7C] block">
+                        7:00 PM - 9:00 PM
+                      </span>
+                      <span className="text-[#7a7a7a] text-xs">
+                        By Appointment Only
+                      </span>
                     </div>
                   </div>
                   <div className="flex justify-between items-center py-3 border-b border-[rgba(107,77,124,0.1)]">
                     <span className="text-[#3a3a3a]">Saturday</span>
                     <div className="text-right">
-                      <span className="text-[#6B4D7C] block">7:00 PM - 9:00 PM</span>
-                      <span className="text-[#7a7a7a] text-xs">By Appointment Only</span>
+                      <span className="text-[#6B4D7C] block">
+                        7:00 PM - 9:00 PM
+                      </span>
+                      <span className="text-[#7a7a7a] text-xs">
+                        By Appointment Only
+                      </span>
                     </div>
                   </div>
                   <div className="flex justify-between items-center py-3 border-b border-[rgba(107,77,124,0.1)]">
                     <span className="text-[#3a3a3a]">Sunday</span>
                     <div className="text-right">
-                      <span className="text-[#6B4D7C] block">7:00 PM - 9:00 PM</span>
-                      <span className="text-[#7a7a7a] text-xs">By Appointment Only</span>
+                      <span className="text-[#6B4D7C] block">
+                        7:00 PM - 9:00 PM
+                      </span>
+                      <span className="text-[#7a7a7a] text-xs">
+                        By Appointment Only
+                      </span>
                     </div>
                   </div>
                   <div className="flex justify-between items-center py-3">
@@ -143,12 +174,15 @@ export default function Clinic() {
                   <h3 className="text-[#3a3a3a]">Location</h3>
                 </div>
                 <p className="text-[#7a7a7a] text-sm leading-relaxed mb-4">
-                  Milestones Child Clinic<br />
-                  123 Marine Drive, Churchgate<br />
-                  Mumbai, Maharashtra 400020<br />
+                  Milestones Child Clinic
+                  <br />
+                  123 Marine Drive, Churchgate
+                  <br />
+                  Mumbai, Maharashtra 400020
+                  <br />
                   India
                 </p>
-                <a 
+                <a
                   href="https://www.google.com/maps/place/Princeton+building/@19.1151788,72.8297091,17z/data=!3m1!4b1!4m6!3m5!1s0x3be7c9dd3461d9c1:0xa3b41636086d822d!8m2!3d19.1151788!4d72.832284!16s%2Fg%2F11c5q8h0wz?entry=ttu&g_ep=EgoyMDI1MDEyMS4wIKXMDSoASAFQAw%3D%3D"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -168,13 +202,19 @@ export default function Clinic() {
                 <div className="space-y-3 text-sm">
                   <div>
                     <p className="text-[#7a7a7a] mb-1">Main Line</p>
-                    <a href="tel:+919876543210" className="text-[#6B4D7C] hover:underline">
+                    <a
+                      href="tel:+919876543210"
+                      className="text-[#6B4D7C] hover:underline"
+                    >
                       +91 98765 43210
                     </a>
                   </div>
                   <div>
                     <p className="text-[#7a7a7a] mb-1">Emergency</p>
-                    <a href="tel:+919876543211" className="text-[#6B4D7C] hover:underline">
+                    <a
+                      href="tel:+919876543211"
+                      className="text-[#6B4D7C] hover:underline"
+                    >
                       +91 98765 43211
                     </a>
                   </div>
@@ -193,9 +233,12 @@ export default function Clinic() {
               <div className="w-2 h-2 rounded-full bg-[#6B4D7C]" />
               <span className="text-sm text-[#6B4D7C]">Our Services</span>
             </div>
-            <h2 className="text-[#3a3a3a] mb-4">Comprehensive Pediatric Care</h2>
+            <h2 className="text-[#3a3a3a] mb-4">
+              Comprehensive Pediatric Care
+            </h2>
             <p className="text-[#7a7a7a] max-w-3xl mx-auto">
-              From infancy through adolescence, we provide complete care tailored to your child's unique needs
+              From infancy through adolescence, we provide complete care
+              tailored to your child's unique needs
             </p>
           </div>
 
@@ -205,20 +248,25 @@ export default function Clinic() {
                 key={index}
                 className="group bg-white rounded-3xl p-8 border border-[rgba(107,77,124,0.15)] hover:border-[#6B4D7C] hover:shadow-[0_20px_60px_rgba(107,77,124,0.15)] transition-all duration-500 hover:-translate-y-2 cursor-pointer"
                 style={{
-                  animation: `fadeInUp 0.6s ease-out ${index * 0.1}s both`
+                  animation: `fadeInUp 0.6s ease-out ${index * 0.1}s both`,
                 }}
               >
                 <div className="w-16 h-16 rounded-2xl bg-[rgba(107,77,124,0.1)] flex items-center justify-center mb-6 group-hover:bg-[#6B4D7C] group-hover:scale-110 transition-all duration-300">
                   <service.icon className="w-8 h-8 text-[#6B4D7C] group-hover:text-white transition-colors duration-300" />
                 </div>
-                <h3 className="text-[#3a3a3a] mb-3 group-hover:text-[#6B4D7C] transition-colors">{service.title}</h3>
+                <h3 className="text-[#3a3a3a] mb-3 group-hover:text-[#6B4D7C] transition-colors">
+                  {service.title}
+                </h3>
                 <p className="text-[#7a7a7a] text-sm mb-4 leading-relaxed">
                   {service.description}
                 </p>
                 <div className="pt-4 border-t border-[rgba(107,77,124,0.1)]">
                   <ul className="space-y-2">
                     {service.features.map((feature, idx) => (
-                      <li key={idx} className="flex items-center gap-2 text-[#7a7a7a] text-sm">
+                      <li
+                        key={idx}
+                        className="flex items-center gap-2 text-[#7a7a7a] text-sm"
+                      >
                         <div className="w-1.5 h-1.5 rounded-full bg-[#6B4D7C]" />
                         <span>{feature}</span>
                       </li>
@@ -231,7 +279,6 @@ export default function Clinic() {
         </div>
       </section>
 
-      <GallerySection />
       <TestimonialsSection />
     </div>
   );

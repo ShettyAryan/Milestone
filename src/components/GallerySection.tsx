@@ -4,45 +4,45 @@ import { ImageWithFallback } from './figma/ImageWithFallback';
 
 const galleryImages = [
   {
-    url: 'https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200',
-    caption: 'Modern pediatric examination room',
-    category: 'Facilities'
+    url: "https://res.cloudinary.com/dzq2acoyj/image/upload/v1766584201/ENTRANCE_chuuxk.png",
+    caption: "Clinic",
+    category: "Clinic",
   },
   {
-    url: 'https://images.unsplash.com/photo-1581594549595-35f6edc7b762?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200',
-    caption: 'Welcoming reception area',
-    category: 'Facilities'
+    url: "https://res.cloudinary.com/dzq2acoyj/image/upload/v1766584176/examination_couch_awup8t.png",
+    caption: "Modern pediatric examination room",
+    category: "Facilities",
   },
   {
-    url: 'https://images.unsplash.com/photo-1519340241574-2cec6aef0c01?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200',
-    caption: 'Caring for newborns',
-    category: 'Care'
+    url: "https://res.cloudinary.com/dzq2acoyj/image/upload/v1766584193/RECEPTIONIST_AREA_e5ihoc.png",
+    caption: "Welcoming reception area",
+    category: "Facilities",
   },
   {
-    url: 'https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200',
-    caption: 'Developmental assessments',
-    category: 'Services'
+    url: "https://res.cloudinary.com/dzq2acoyj/image/upload/v1766584204/FEEDIND_AND_WAITING_AREA_m2xti0.png",
+    caption: "Feeding and Waiting area",
+    category: "Facilities",
   },
   {
-    url: 'https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200',
-    caption: 'Comfortable waiting area',
-    category: 'Facilities'
+    url: "https://res.cloudinary.com/dzq2acoyj/image/upload/v1766584317/IMAGE1_bkqhnu.png",
+    caption: "Caring for newborns",
+    category: "Care",
   },
   {
-    url: 'https://images.unsplash.com/photo-1490818387583-1baba5e638af?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200',
-    caption: 'Health education',
-    category: 'Services'
+    url: "https://res.cloudinary.com/dzq2acoyj/image/upload/v1766584317/IMAGE4_hlg4gt.png",
+    caption: "Vaccinations",
+    category: "Services",
   },
   {
-    url: 'https://images.unsplash.com/photo-1516627145497-ae6968895b74?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200',
-    caption: 'Vaccination services',
-    category: 'Care'
+    url: "https://res.cloudinary.com/dzq2acoyj/image/upload/v1766584199/ACHIVEMENTS_SECTION_jp80b7.png",
+    caption: "Acheivements",
+    category: "Acheivemnets",
   },
   {
-    url: 'https://images.unsplash.com/photo-1596496050827-8299e0220de1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200',
-    caption: 'Play area for children',
-    category: 'Facilities'
-  }
+    url: "https://res.cloudinary.com/dzq2acoyj/image/upload/v1766584181/Credential_Wall_hi7ijz.png",
+    caption: "Credentials",
+    category: "Credentials",
+  },
 ];
 
 export function GallerySection() {
