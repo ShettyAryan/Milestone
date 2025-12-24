@@ -68,7 +68,8 @@ export default function Contact() {
             </div>
             <h2 className="text-[#3a3a3a] mb-4">Contact Us</h2>
             <p className="text-[#7a7a7a] max-w-3xl mx-auto">
-              We're here to answer your questions and schedule appointments. Reach out to us today.
+              We're here to answer your questions and schedule appointments.
+              Reach out to us today.
             </p>
           </div>
 
@@ -81,13 +82,17 @@ export default function Contact() {
               <h3 className="text-[#3a3a3a]">Schedule Appointment</h3>
             </div>
             <p className="text-[#7a7a7a] text-sm mb-6">
-              Fill in your details and we'll call you back to schedule your appointment
+              Fill in your details and we'll call you back to schedule your
+              appointment
             </p>
-            
+
             <form className="space-y-6">
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                 <div>
-                  <label htmlFor="parentName" className="block text-sm text-[#3a3a3a] mb-2">
+                  <label
+                    htmlFor="parentName"
+                    className="block text-sm text-[#3a3a3a] mb-2"
+                  >
                     Parent Name *
                   </label>
                   <input
@@ -98,7 +103,10 @@ export default function Contact() {
                   />
                 </div>
                 <div>
-                  <label htmlFor="childName" className="block text-sm text-[#3a3a3a] mb-2">
+                  <label
+                    htmlFor="childName"
+                    className="block text-sm text-[#3a3a3a] mb-2"
+                  >
                     Child's Name *
                   </label>
                   <input
@@ -109,7 +117,10 @@ export default function Contact() {
                   />
                 </div>
                 <div>
-                  <label htmlFor="phone" className="block text-sm text-[#3a3a3a] mb-2">
+                  <label
+                    htmlFor="phone"
+                    className="block text-sm text-[#3a3a3a] mb-2"
+                  >
                     Phone Number *
                   </label>
                   <input
@@ -120,7 +131,10 @@ export default function Contact() {
                   />
                 </div>
                 <div>
-                  <label htmlFor="childAge" className="block text-sm text-[#3a3a3a] mb-2">
+                  <label
+                    htmlFor="childAge"
+                    className="block text-sm text-[#3a3a3a] mb-2"
+                  >
                     Child's Age
                   </label>
                   <input
@@ -130,11 +144,28 @@ export default function Contact() {
                     placeholder="e.g., 2 years 6 months"
                   />
                 </div>
+                <div>
+                  <label
+                    htmlFor="childDOB"
+                    className="block text-sm text-[#3a3a3a] mb-2"
+                  >
+                    Child's DOB
+                  </label>
+                  <input
+                    type='date'
+                    id="childAge"
+                    className="w-full px-4 py-3 rounded-xl border border-[rgba(107,77,124,0.2)] bg-white focus:outline-none focus:ring-2 focus:ring-[#6B4D7C] focus:border-transparent"
+                    placeholder="e.g., 2 years 6 months"
+                  />
+                </div>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label htmlFor="preferredTime" className="block text-sm text-[#3a3a3a] mb-2">
+                  <label
+                    htmlFor="preferredTime"
+                    className="block text-sm text-[#3a3a3a] mb-2"
+                  >
                     Preferred Call Time *
                   </label>
                   <select
@@ -149,7 +180,10 @@ export default function Contact() {
                 </div>
 
                 <div>
-                  <label htmlFor="reason" className="block text-sm text-[#3a3a3a] mb-2">
+                  <label
+                    htmlFor="reason"
+                    className="block text-sm text-[#3a3a3a] mb-2"
+                  >
                     Reason for Visit
                   </label>
                   <input
@@ -184,9 +218,12 @@ export default function Contact() {
                   <div>
                     <h4 className="text-[#3a3a3a] mb-1">Clinic Address</h4>
                     <p className="text-[#7a7a7a] text-sm">
-                      Milestones Child Clinic<br />
-                      123 Marine Drive, Churchgate<br />
-                      Mumbai, Maharashtra 400020<br />
+                      Milestones Child Clinic
+                      <br />
+                      123 Marine Drive, Churchgate
+                      <br />
+                      Mumbai, Maharashtra 400020
+                      <br />
                       India
                     </p>
                   </div>
@@ -199,7 +236,8 @@ export default function Contact() {
                   <div>
                     <h4 className="text-[#3a3a3a] mb-1">Phone Numbers</h4>
                     <p className="text-[#7a7a7a] text-sm">
-                      Main: +91 98765 43210<br />
+                      Main: +91 98765 43210
+                      <br />
                       Emergency: +91 98765 43211
                     </p>
                   </div>
@@ -212,7 +250,8 @@ export default function Contact() {
                   <div>
                     <h4 className="text-[#3a3a3a] mb-1">Email</h4>
                     <p className="text-[#7a7a7a] text-sm">
-                      info@milestoneschildclinic.com<br />
+                      info@milestoneschildclinic.com
+                      <br />
                       dr.joshi@milestoneschildclinic.com
                     </p>
                   </div>
@@ -225,9 +264,12 @@ export default function Contact() {
                   <div>
                     <h4 className="text-[#3a3a3a] mb-1">Clinic Hours</h4>
                     <p className="text-[#7a7a7a] text-sm">
-                      Monday - Friday: 9:00 AM - 6:00 PM<br />
-                      Saturday: 9:00 AM - 2:00 PM<br />
-                      Sunday: By Appointment Only<br />
+                      Monday - Friday: 9:00 AM - 6:00 PM
+                      <br />
+                      Saturday: 9:00 AM - 2:00 PM
+                      <br />
+                      Sunday: By Appointment Only
+                      <br />
                       Emergency: 24/7 Available
                     </p>
                   </div>
@@ -237,13 +279,13 @@ export default function Contact() {
 
             {/* Map Section */}
             <div className="bg-white rounded-3xl overflow-hidden border border-[rgba(107,77,124,0.15)] shadow-lg">
-              <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3769.8284855221186!2d72.8297091!3d19.1151788!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c9dd3461d9c1%3A0xa3b41636086d822d!2sPrinceton%20building!5e0!3m2!1sen!2sin!4v1766335789147!5m2!1sen!2sin" 
-                width="100%" 
-                height="100%" 
-                style={{ border: 0, minHeight: '350px' }}
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3769.8284855221186!2d72.8297091!3d19.1151788!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c9dd3461d9c1%3A0xa3b41636086d822d!2sPrinceton%20building!5e0!3m2!1sen!2sin!4v1766335789147!5m2!1sen!2sin"
+                width="100%"
+                height="100%"
+                style={{ border: 0, minHeight: "350px" }}
                 allowFullScreen={true}
-                loading="lazy" 
+                loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
                 title="Milestones Child Clinic Location"
               />
@@ -258,24 +300,34 @@ export default function Contact() {
           <div className="text-center mb-12">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[rgba(107,77,124,0.1)] border border-[rgba(107,77,124,0.2)] mb-4">
               <div className="w-2 h-2 rounded-full bg-[#6B4D7C]" />
-              <span className="text-sm text-[#6B4D7C]">Questions & Answers</span>
+              <span className="text-sm text-[#6B4D7C]">
+                Questions & Answers
+              </span>
             </div>
             <h2 className="text-[#3a3a3a] mb-4">Frequently Asked Questions</h2>
             <p className="text-[#7a7a7a] max-w-2xl mx-auto">
-              Find answers to common questions about our services, appointments, and patient care
+              Find answers to common questions about our services, appointments,
+              and patient care
             </p>
           </div>
 
           <div className="space-y-4">
             {faqs.map((faq, index) => (
-              <FAQItem key={index} question={faq.question} answer={faq.answer} />
+              <FAQItem
+                key={index}
+                question={faq.question}
+                answer={faq.answer}
+              />
             ))}
           </div>
 
           <div className="text-center mt-8">
             <p className="text-[#7a7a7a] text-sm">
-              Still have questions?{' '}
-              <a href="tel:+919876543210" className="text-[#6B4D7C] hover:underline">
+              Still have questions?{" "}
+              <a
+                href="tel:+919876543210"
+                className="text-[#6B4D7C] hover:underline"
+              >
                 Call us at +91 98765 43210
               </a>
             </p>

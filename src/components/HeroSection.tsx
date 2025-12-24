@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 export function HeroSection() {
   return (
-    <section id="home" className="relative bg-[#FFF8F9] overflow-hidden">
+    <section id="home" className="relative bg-[#FFF8F9] overflow-hidden mb-10">
       {/* Background decorative circles */}
       <div className="absolute bg-[rgba(207,237,234,0.3)] rounded-full w-[500px] h-[500px] top-10 right-[5%] blur-3xl" />
       <div className="absolute bg-[rgba(107,77,124,0.15)] rounded-full w-[400px] h-[400px] top-[360px] left-[5%] blur-3xl" />
@@ -29,7 +29,7 @@ export function HeroSection() {
                 Because every milestone in your child's journey matters
               </h1>
               {/* Decorative underline */}
-              <div className="w-[300px] h-4 relative -mt-2">
+              {/* <div className="w-[300px] h-4 relative -mt-2">
                 <svg className="w-full h-full" viewBox="0 0 300 12" fill="none">
                   <path
                     d={svgPaths.p124a4580}
@@ -38,7 +38,7 @@ export function HeroSection() {
                     strokeLinecap="round"
                   />
                 </svg>
-              </div>
+              </div> */}
             </div>
 
             {/* Description */}
@@ -107,7 +107,7 @@ export function HeroSection() {
 
               {/* Years stat */}
               <div>
-                <p className="text-2xl text-[#2a2a2a] mb-1">15+</p>
+                <p className="text-2xl text-[#2a2a2a] mb-1">30+</p>
                 <p className="text-sm text-[#5a5a5a]">Years of care</p>
               </div>
             </div>

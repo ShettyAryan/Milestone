@@ -1,5 +1,6 @@
 import { Heart, Stethoscope, Syringe, Baby, Shield, Activity } from 'lucide-react';
 import { ImageWithFallback } from './figma/ImageWithFallback';
+import { Link } from 'react-router-dom';
 
 const services = [
   {
@@ -42,10 +43,13 @@ const services = [
 
 export function ServicesSection() {
   return (
-    <section id="services" className="py-16 px-4 bg-white relative overflow-hidden">
+    <section
+      id="services"
+      className="py-16 px-4 bg-white relative overflow-hidden"
+    >
       {/* Background gradient accent */}
       <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-[rgba(107,77,124,0.08)] rounded-full blur-3xl" />
-      
+
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Section Header */}
         <div className="text-center mb-16">
@@ -55,37 +59,40 @@ export function ServicesSection() {
           </div>
           <h2 className="text-[#2a2a2a] mb-4">Complete Care for Every Stage</h2>
           <p className="text-[#5a5a5a] max-w-2xl mx-auto text-lg">
-            From infancy through adolescence, we provide comprehensive pediatric services tailored to your child's unique needs at every milestone.
+            From infancy through adolescence, we provide comprehensive pediatric
+            services tailored to your child's unique needs at every milestone.
           </p>
         </div>
 
         {/* Services Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
-            <div
-              key={index}
-              className="group relative overflow-hidden rounded-2xl border border-[rgba(107,77,124,0.15)] hover:border-[rgba(107,77,124,0.4)] shadow-[0_8px_30px_rgba(107,77,124,0.1)] hover:shadow-[0_16px_50px_rgba(107,77,124,0.2)] transition-all duration-300 hover:-translate-y-1"
-            >
-              {/* Background Image with Overlay */}
-              <div className="absolute inset-0 z-0">
-                <ImageWithFallback
-                  src={service.imageUrl}
-                  alt={service.title}
-                  className="w-full h-full object-cover opacity-50 group-hover:opacity-60 transition-opacity duration-300 group-hover:scale-105"
-                />
-                {/* Purple Shadow Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-b from-[rgba(107,77,124,0.35)] via-[rgba(107,77,124,0.25)] to-[rgba(107,77,124,0.45)]" />
-              </div>
-
-              {/* Content */}
-              <div className="relative z-10 p-8 h-full bg-gradient-to-b from-white/50 via-white/60 to-white/70">
-                <div className="w-14 h-14 rounded-xl bg-[rgba(107,77,124,0.15)] flex items-center justify-center mb-6 group-hover:bg-[rgba(107,77,124,0.25)] transition-colors shadow-md">
-                  <service.icon className="w-7 h-7 text-[#6B4D7C]" />
+            <Link to="/contact">
+              <div
+                key={index}
+                className="group relative overflow-hidden rounded-2xl border border-[rgba(107,77,124,0.15)] hover:border-[rgba(107,77,124,0.4)] shadow-[0_8px_30px_rgba(107,77,124,0.1)] hover:shadow-[0_16px_50px_rgba(107,77,124,0.2)] transition-all duration-300 hover:-translate-y-1"
+              >
+                {/* Background Image with Overlay */}
+                <div className="absolute inset-0 z-0">
+                  <ImageWithFallback
+                    src={service.imageUrl}
+                    alt={service.title}
+                    className="w-full h-full object-cover opacity-50 group-hover:opacity-60 transition-opacity duration-300 group-hover:scale-105"
+                  />
+                  {/* Purple Shadow Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-b from-[rgba(107,77,124,0.35)] via-[rgba(107,77,124,0.25)] to-[rgba(107,77,124,0.45)]" />
                 </div>
-                <h3 className="text-[#3a3a3a] mb-3">{service.title}</h3>
-                <p className="text-[#7a7a7a]">{service.description}</p>
+
+                {/* Content */}
+                <div className="relative z-10 p-8 h-full bg-gradient-to-b from-white/50 via-white/60 to-white/70">
+                  <div className="w-14 h-14 rounded-xl bg-[rgba(107,77,124,0.15)] flex items-center justify-center mb-6 group-hover:bg-[rgba(107,77,124,0.25)] transition-colors shadow-md">
+                    <service.icon className="w-7 h-7 text-[#6B4D7C]" />
+                  </div>
+                  <h3 className="text-[#3a3a3a] mb-3">{service.title}</h3>
+                  <p className="text-[#7a7a7a]">{service.description}</p>
+                </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>

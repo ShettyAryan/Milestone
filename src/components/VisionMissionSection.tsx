@@ -28,7 +28,11 @@ export function VisionMissionSection() {
             </div>
             <h3 className="text-white mb-6">Vision</h3>
             <p className="text-white text-lg leading-relaxed opacity-95">
-              To ensure every child - regardless of their size, condition, or circumstance - receives care that's compassionate, evidence-based, and globally benchmarked.
+              To ensure every child — regardless of their size, condition, or
+              circumstance — receives care that is compassionate,
+              evidence-based, and globally benchmarked. We are committed to
+              combining advanced medical expertise with a gentle, child-centric
+              approach that prioritizes comfort, safety, and trust.
             </p>
           </div>
 
@@ -54,7 +58,8 @@ export function VisionMissionSection() {
         {/* Bottom Quote */}
         <div className="mt-12 text-center max-w-4xl mx-auto bg-[#FFF8F9] rounded-3xl p-10 border border-[rgba(107,77,124,0.1)]">
           <p className="text-xl text-[#3a3a3a] italic leading-relaxed mb-4">
-            "The goal is not just to treat illness, but to nurture a lifetime of health and confidence."
+            "The goal is not just to treat illness, but to nurture a lifetime of
+            health and confidence."
           </p>
           <p className="text-[#6B4D7C]">- Dr. Vinay H. Joshi</p>
         </div>

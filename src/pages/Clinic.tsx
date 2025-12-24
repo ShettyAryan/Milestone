@@ -132,7 +132,7 @@ export default function Clinic() {
                       <span className="text-[#6B4D7C] block">
                         7:00 PM - 9:00 PM
                       </span>
-                      <span className="text-[#7a7a7a] text-xs">
+                      <span className="text-[#7a7a7a] text-xs font-medium">
                         By Appointment Only
                       </span>
                     </div>
@@ -143,7 +143,7 @@ export default function Clinic() {
                       <span className="text-[#6B4D7C] block">
                         7:00 PM - 9:00 PM
                       </span>
-                      <span className="text-[#7a7a7a] text-xs">
+                      <span className="text-[#7a7a7a] text-xs font-medium">
                         By Appointment Only
                       </span>
                     </div>
@@ -154,7 +154,7 @@ export default function Clinic() {
                       <span className="text-[#6B4D7C] block">
                         7:00 PM - 9:00 PM
                       </span>
-                      <span className="text-[#7a7a7a] text-xs">
+                      <span className="text-[#7a7a7a] text-xs font-medium">
                         By Appointment Only
                       </span>
                     </div>

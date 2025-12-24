@@ -9,7 +9,7 @@ export function AboutSection() {
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[rgba(107,77,124,0.1)] border border-[rgba(107,77,124,0.2)] mb-4">
             <div className="w-2 h-2 rounded-full bg-[#6B4D7C]" />
-            <span className="text-sm text-[#6B4D7C]">Meet Dr. Joshi</span>
+            <span className="text-sm text-[#6B4D7C] ">Meet Dr. Joshi</span>
           </div>
           <h2 className="text-[#3a3a3a] mb-4">Expert Care You Can Trust</h2>
           <p className="text-[#7a7a7a] max-w-2xl mx-auto">
@@ -36,11 +36,13 @@ export function AboutSection() {
             <div className="flex flex-col bg-white rounded-2xl border border-[rgba(107,77,124,0.1)] p-8">
               {/* Header */}
               <div className="mb-6">
-                <h3 className="text-[#3a3a3a] mb-2">Dr. Vinay H. Joshi</h3>
-                <p className="text-[#6B4D7C] mb-3">
+                <h3 className="text-[#3a3a3a] mb-2 text-xl">
+                  Dr. Vinay H. Joshi
+                </h3>
+                <p className="text-[#6B4D7C] mb-3 font-medium">
                   MBBS, MD (Pediatrics), DM (Neonatology)
                 </p>
-                <p className="text-sm text-[#7a7a7a]">
+                <p className="text-sm text-[#7a7a7a] font-medium">
                   Fellowships in Neonatal & Perinatal Medicine, Pediatric &
                   Cardiac Critical Care, and Transport Medicine
                 </p>
@@ -49,27 +51,27 @@ export function AboutSection() {
               {/* Credentials Badges */}
               <div className="mb-6">
                 <div className="flex flex-wrap gap-2">
-                  <span className="inline-flex items-center gap-2 px-3 py-1.5 bg-[rgba(107,77,124,0.1)] rounded-full text-xs text-[#6B4D7C]">
+                  <span className="inline-flex items-center gap-2 px-3 py-1.5 bg-[rgba(107,77,124,0.1)] rounded-full text-xs text-[#6B4D7C] font-medium">
                     <GraduationCap className="w-3.5 h-3.5" />
                     KEM Hospital, Mumbai
                   </span>
-                  <span className="inline-flex items-center gap-2 px-3 py-1.5 bg-[rgba(107,77,124,0.1)] rounded-full text-xs text-[#6B4D7C]">
+                  <span className="inline-flex items-center gap-2 px-3 py-1.5 bg-[rgba(107,77,124,0.1)] rounded-full text-xs text-[#6B4D7C] font-medium">
                     <Globe className="w-3.5 h-3.5" />
                     Australia & Canada
                   </span>
-                  <span className="inline-flex items-center gap-2 px-3 py-1.5 bg-[rgba(107,77,124,0.1)] rounded-full text-xs text-[#6B4D7C]">
+                  <span className="inline-flex items-center gap-2 px-3 py-1.5 bg-[rgba(107,77,124,0.1)] rounded-full text-xs text-[#6B4D7C] font-medium">
                     <Heart className="w-3.5 h-3.5" />
                     Cardiac Critical Care
                   </span>
-                  <span className="inline-flex items-center gap-2 px-3 py-1.5 bg-[rgba(107,77,124,0.1)] rounded-full text-xs text-[#6B4D7C]">
+                  <span className="inline-flex items-center gap-2 px-3 py-1.5 bg-[rgba(107,77,124,0.1)] rounded-full text-xs text-[#6B4D7C] font-medium">
                     <Stethoscope className="w-3.5 h-3.5" />
-                    25+ Years
+                    30+ Years
                   </span>
-                  <span className="inline-flex items-center gap-2 px-3 py-1.5 bg-[rgba(107,77,124,0.1)] rounded-full text-xs text-[#6B4D7C]">
+                  <span className="inline-flex items-center gap-2 px-3 py-1.5 bg-[rgba(107,77,124,0.1)] rounded-full text-xs text-[#6B4D7C] font-medium">
                     <Award className="w-3.5 h-3.5" />
-                    President-Elect, IAP Mumbai
+                    Ex-President-Elect, IAP Mumbai
                   </span>
-                  <span className="inline-flex items-center gap-2 px-3 py-1.5 bg-[rgba(107,77,124,0.1)] rounded-full text-xs text-[#6B4D7C]">
+                  <span className="inline-flex items-center gap-2 px-3 py-1.5 bg-[rgba(107,77,124,0.1)] rounded-full text-xs text-[#6B4D7C] font-medium">
                     <Building className="w-3.5 h-3.5" />
                     Nowrosjee Wadia Hospital
                   </span>
@@ -88,7 +90,7 @@ export function AboutSection() {
                 <div className="flex items-start gap-2">
                   <div className="w-1.5 h-1.5 rounded-full bg-[#6B4D7C] flex-shrink-0 mt-2" />
                   <p className="text-sm text-[#7a7a7a]">
-                    <span className="text-[#3a3a3a]">President-Elect –</span>{" "}
+                    <span className="text-[#3a3a3a]">Ex-President-Elect –</span>{" "}
                     Indian Academy of Pediatrics (Mumbai Branch)
                   </p>
                 </div>

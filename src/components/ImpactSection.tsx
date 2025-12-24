@@ -41,8 +41,8 @@ const impactStats = [
 
 const milestones = [
   {
-    headline: 'Advanced NICU Setup',
-    description: 'Established one of Mumbai\'s most advanced NICUs and Pediatric Cardiac ICUs at Kokilaben Dhirubhai Ambani Hospital'
+    headline: 'Advanced ICU Setup',
+    description: 'Established one of Mumbai\'s most advanced ICUs and Pediatric Cardiac ICUs at Kokilaben Dhirubhai Ambani Hospital'
   },
   {
     headline: 'Pioneering Technology',

@@ -1,5 +1,6 @@
 import { Calendar, ArrowRight } from 'lucide-react';
 import { ImageWithFallback } from './figma/ImageWithFallback';
+import { Link } from 'react-router-dom';
 
 const blogPosts = [
   {
@@ -62,9 +63,12 @@ export function BlogSection() {
             <div className="w-2 h-2 rounded-full bg-[#6B4D7C]" />
             <span className="text-sm text-[#6B4D7C]">Blog & Resources</span>
           </div>
-          <h2 className="text-[#3a3a3a] mb-4">Health Tips & Parenting Advice</h2>
+          <h2 className="text-[#3a3a3a] mb-4">
+            Health Tips & Parenting Advice
+          </h2>
           <p className="text-[#7a7a7a] max-w-2xl mx-auto">
-            Stay informed with the latest pediatric health information, parenting tips, and wellness advice from Dr. Joshi
+            Stay informed with the latest pediatric health information,
+            parenting tips, and wellness advice from Dr. Joshi
           </p>
         </div>
 
@@ -119,9 +123,11 @@ export function BlogSection() {
 
         {/* View All Button */}
         <div className="text-center mt-12">
-          <button className="px-8 py-4 bg-[#6B4D7C] text-white rounded-full hover:bg-[#5a3d6a] transition-colors">
-            View All Articles
-          </button>
+          <Link to="/blog">
+            <button className="px-8 py-4 bg-[#6B4D7C] text-white rounded-full hover:bg-[#5a3d6a] transition-colors">
+              View All Articles
+            </button>
+          </Link>
         </div>
       </div>
     </section>
