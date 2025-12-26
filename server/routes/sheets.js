@@ -67,7 +67,7 @@ router.post('/append', async (req, res) => {
 
     const response = await sheets.spreadsheets.values.append({
       spreadsheetId: spreadsheetId,
-      range: 'Sheet1!A:L',
+      range: 'Sheet1!A:M',
       valueInputOption: 'RAW',
       requestBody: {
         values: [values]
@@ -107,7 +107,7 @@ router.get('/headers', async (req, res) => {
     try {
       const readResponse = await sheets.spreadsheets.values.get({
         spreadsheetId: spreadsheetId,
-        range: 'Sheet1!A1:L1'
+        range: 'Sheet1!A1:M1'
       });
 
       if (readResponse.data.values && readResponse.data.values.length > 0) {
@@ -128,6 +128,7 @@ router.get('/headers', async (req, res) => {
       'Parent Name',
       'Child Name',
       'Age',
+      'Date of Birth',
       'Email',
       'Phone',
       'Reason',
@@ -138,7 +139,7 @@ router.get('/headers', async (req, res) => {
 
     const writeResponse = await sheets.spreadsheets.values.update({
       spreadsheetId: spreadsheetId,
-      range: 'Sheet1!A1:L1',
+      range: 'Sheet1!A1:M1',
       valueInputOption: 'RAW',
       requestBody: {
         values: [headers]

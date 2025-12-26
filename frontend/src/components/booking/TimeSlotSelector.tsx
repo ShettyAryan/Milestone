@@ -1,5 +1,5 @@
 import { Clock } from 'lucide-react';
-import { generateTimeSlots, formatTimeDisplay } from '../../utils/dateHelpers';
+import { generateTimeSlots, formatTimeDisplay, isTimeSlotInPast } from '../../utils/dateHelpers';
 import { TimeSlot } from '../../types/booking.types';
 
 interface TimeSlotSelectorProps {
@@ -27,6 +27,20 @@ export function TimeSlotSelector({
 
   const isSlotSelected = (time: string): boolean => {
     return selectedTime === time;
+  };
+
+  const isSlotAvailable = (time: string): boolean => {
+    // Check if slot is booked
+    if (isSlotBooked(time)) {
+      return false;
+    }
+    
+    // Check if slot is in the past (for today's date)
+    if (selectedDate && isTimeSlotInPast(selectedDate, time)) {
+      return false;
+    }
+    
+    return true;
   };
 
   if (!selectedDate) {
@@ -57,31 +71,38 @@ export function TimeSlotSelector({
       ) : (
         <div className="bg-white rounded-2xl border border-[rgba(107,77,124,0.2)] p-6">
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
-            {timeSlots.map((time) => {
-              const booked = isSlotBooked(time);
-              const selected = isSlotSelected(time);
+            {timeSlots
+              .filter((time) => isSlotAvailable(time)) // Only show available slots
+              .map((time) => {
+                const selected = isSlotSelected(time);
 
-              return (
-                <button
-                  key={time}
-                  type="button"
-                  onClick={() => !booked && onTimeSelect(time)}
-                  disabled={booked}
-                  className={`
-                    px-4 py-3 rounded-xl text-sm font-medium transition-all
-                    ${selected
-                      ? 'bg-[#6B4D7C] text-white shadow-md'
-                      : booked
-                      ? 'bg-[#f5f5f5] text-[#9a9a9a] cursor-not-allowed line-through'
-                      : 'bg-white text-[#3a3a3a] border-2 border-[#CFEDEA] hover:border-[#6B4D7C] hover:bg-[rgba(107,77,124,0.05)]'
-                    }
-                  `}
-                >
-                  {formatTimeDisplay(time)}
-                </button>
-              );
-            })}
+                return (
+                  <button
+                    key={time}
+                    type="button"
+                    onClick={() => onTimeSelect(time)}
+                    className={`
+                      px-4 py-3 rounded-xl text-sm font-medium transition-all
+                      ${selected
+                        ? 'bg-[#6B4D7C] text-white shadow-md'
+                        : 'bg-white text-[#3a3a3a] border-2 border-[#CFEDEA] hover:border-[#6B4D7C] hover:bg-[rgba(107,77,124,0.05)]'
+                      }
+                    `}
+                  >
+                    {formatTimeDisplay(time)}
+                  </button>
+                );
+              })}
           </div>
+          
+          {/* Show message if no slots available */}
+          {timeSlots.filter((time) => isSlotAvailable(time)).length === 0 && (
+            <div className="text-center py-8">
+              <Clock className="w-12 h-12 text-[#9a9a9a] mx-auto mb-3" />
+              <p className="text-[#7a7a7a]">No available time slots for this date</p>
+              <p className="text-sm text-[#9a9a9a] mt-1">Please select another date</p>
+            </div>
+          )}
 
           {selectedTime && (
             <div className="mt-4 pt-4 border-t border-[rgba(107,77,124,0.1)]">

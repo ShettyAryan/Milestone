@@ -20,13 +20,41 @@ export const validateChildName = (name: string): string | undefined => {
   return undefined;
 };
 
-export const validateAge = (age: number): string | undefined => {
-  if (!age && age !== 0) {
+export const validateAge = (age: string): string | undefined => {
+  if (!age || age.trim().length === 0) {
     return "Child's age is required";
   }
-  if (age < 0 || age > 18) {
-    return 'Age must be between 0 and 18 years';
+  return undefined;
+};
+
+export const validateDateOfBirth = (dateOfBirth: string): string | undefined => {
+  if (!dateOfBirth || dateOfBirth.trim().length === 0) {
+    return "Child's date of birth is required";
   }
+  
+  // Validate date format (YYYY-MM-DD)
+  const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
+  if (!dateRegex.test(dateOfBirth)) {
+    return 'Please enter a valid date (YYYY-MM-DD)';
+  }
+  
+  // Check if date is not in the future
+  const birthDate = new Date(dateOfBirth);
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  
+  if (birthDate > today) {
+    return 'Date of birth cannot be in the future';
+  }
+  
+  // Check if date is not too old (reasonable limit, e.g., 100 years ago)
+  const hundredYearsAgo = new Date();
+  hundredYearsAgo.setFullYear(today.getFullYear() - 100);
+  
+  if (birthDate < hundredYearsAgo) {
+    return 'Please enter a valid date of birth';
+  }
+  
   return undefined;
 };
 
@@ -102,6 +130,9 @@ export const validateBookingForm = (formData: BookingFormData): FormErrors => {
   
   const ageError = validateAge(formData.age);
   if (ageError) errors.age = ageError;
+  
+  const dateOfBirthError = validateDateOfBirth(formData.dateOfBirth);
+  if (dateOfBirthError) errors.dateOfBirth = dateOfBirthError;
   
   const emailError = validateEmail(formData.email);
   if (emailError) errors.email = emailError;

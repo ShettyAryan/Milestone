@@ -85,8 +85,20 @@ export function BookingConfirmation({ bookingData, onBookAnother }: BookingConfi
               <div>
                 <p className="text-sm text-[#7a7a7a] mb-1">Child Name</p>
                 <p className="text-lg text-[#3a3a3a] font-medium">
-                  {bookingData.childName} ({bookingData.age} {bookingData.age === 1 ? 'year' : 'years'} old)
+                  {bookingData.childName}
                 </p>
+                <p className="text-sm text-[#7a7a7a] mt-1">
+                  Age: {bookingData.age}
+                </p>
+                {bookingData.dateOfBirth && (
+                  <p className="text-sm text-[#7a7a7a]">
+                    Date of Birth: {new Date(bookingData.dateOfBirth).toLocaleDateString('en-IN', {
+                      year: 'numeric',
+                      month: 'long',
+                      day: 'numeric'
+                    })}
+                  </p>
+                )}
               </div>
             </div>
 

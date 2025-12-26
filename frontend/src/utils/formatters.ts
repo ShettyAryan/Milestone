@@ -47,16 +47,27 @@ export const formatBookingForSheets = (bookingData: any): any[] => {
     timeStyle: 'medium'
   });
   
+  // Format appointment date
+  const appointmentDate = bookingData.appointmentDate instanceof Date
+    ? bookingData.appointmentDate.toLocaleDateString('en-IN', {
+        timeZone: 'Asia/Kolkata',
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit'
+      })
+    : bookingData.appointmentDate;
+  
   return [
     timestamp,
     bookingData.bookingId,
     bookingData.parentName,
     bookingData.childName,
     bookingData.age,
+    bookingData.dateOfBirth || '',
     bookingData.email,
     bookingData.phone,
     bookingData.reason,
-    bookingData.appointmentDate,
+    appointmentDate,
     bookingData.appointmentTime,
     bookingData.status
   ];

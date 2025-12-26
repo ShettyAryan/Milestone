@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { User, Baby, Mail, Phone, FileText } from 'lucide-react';
+import { User, Baby, Mail, Phone, FileText, Calendar } from 'lucide-react';
 import { BookingFormData, FormErrors } from '../../types/booking.types';
 import {
   validateParentName,
   validateChildName,
   validateAge,
+  validateDateOfBirth,
   validateEmail,
   validatePhone,
   validateReason
@@ -36,8 +37,6 @@ export function BookingForm({
       onBlur(field);
     }
   };
-
-  const ageOptions = Array.from({ length: 19 }, (_, i) => i);
 
   return (
     <div className="space-y-6">
@@ -93,6 +92,32 @@ export function BookingForm({
         )}
       </div>
 
+      {/* Date of Birth */}
+      <div>
+        <label htmlFor="dateOfBirth" className="block text-sm text-[#3a3a3a] mb-2 font-medium">
+          Child's Date of Birth <span className="text-red-500">*</span>
+        </label>
+        <div className="relative">
+          <Calendar className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#7a7a7a]" />
+          <input
+            type="date"
+            id="dateOfBirth"
+            value={formData.dateOfBirth}
+            onChange={(e) => handleChange('dateOfBirth', e.target.value)}
+            onBlur={() => handleBlur('dateOfBirth')}
+            max={new Date().toISOString().split('T')[0]}
+            className={`w-full pl-12 pr-4 py-3 rounded-xl border ${
+              errors.dateOfBirth && touched.dateOfBirth
+                ? 'border-red-500'
+                : 'border-[rgba(107,77,124,0.2)]'
+            } bg-white focus:outline-none focus:ring-2 focus:ring-[#6B4D7C] focus:border-transparent`}
+          />
+        </div>
+        {errors.dateOfBirth && touched.dateOfBirth && (
+          <p className="mt-1 text-sm text-red-500">{errors.dateOfBirth}</p>
+        )}
+      </div>
+
       {/* Age */}
       <div>
         <label htmlFor="age" className="block text-sm text-[#3a3a3a] mb-2 font-medium">
@@ -100,24 +125,19 @@ export function BookingForm({
         </label>
         <div className="relative">
           <Baby className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#7a7a7a]" />
-          <select
+          <input
+            type="text"
             id="age"
             value={formData.age}
-            onChange={(e) => handleChange('age', parseInt(e.target.value, 10))}
+            onChange={(e) => handleChange('age', e.target.value)}
             onBlur={() => handleBlur('age')}
             className={`w-full pl-12 pr-4 py-3 rounded-xl border ${
               errors.age && touched.age
                 ? 'border-red-500'
                 : 'border-[rgba(107,77,124,0.2)]'
-            } bg-white focus:outline-none focus:ring-2 focus:ring-[#6B4D7C] focus:border-transparent appearance-none cursor-pointer`}
-          >
-            <option value="">Select age</option>
-            {ageOptions.map((age) => (
-              <option key={age} value={age}>
-                {age} {age === 1 ? 'year' : 'years'} old
-              </option>
-            ))}
-          </select>
+            } bg-white focus:outline-none focus:ring-2 focus:ring-[#6B4D7C] focus:border-transparent`}
+            placeholder="e.g., 5 years, 2 months"
+          />
         </div>
         {errors.age && touched.age && (
           <p className="mt-1 text-sm text-red-500">{errors.age}</p>

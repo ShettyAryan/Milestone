@@ -143,23 +143,24 @@ export function DatePicker({ selectedDate, onDateSelect, error }: DatePickerProp
             const past = isPast(day);
             const sunday = isSunday(day);
 
+            // Hide past dates and Sundays completely
+            if (past || sunday) {
+              return null;
+            }
+
             return (
               <button
                 key={day}
                 type="button"
                 onClick={() => handleDateClick(day)}
-                disabled={!available}
                 className={`
                   aspect-square rounded-xl text-sm font-medium transition-all
                   ${selected
                     ? 'bg-[#6B4D7C] text-white shadow-md'
                     : todayDate
                     ? 'bg-[rgba(107,77,124,0.1)] text-[#6B4D7C] border-2 border-[#6B4D7C]'
-                    : available
-                    ? 'bg-white text-[#3a3a3a] border border-[rgba(107,77,124,0.2)] hover:bg-[rgba(107,77,124,0.1)] hover:border-[#6B4D7C]'
-                    : 'bg-[#f5f5f5] text-[#9a9a9a] cursor-not-allowed'
+                    : 'bg-white text-[#3a3a3a] border border-[rgba(107,77,124,0.2)] hover:bg-[rgba(107,77,124,0.1)] hover:border-[#6B4D7C]'
                   }
-                  ${sunday ? 'opacity-50' : ''}
                 `}
               >
                 {day}

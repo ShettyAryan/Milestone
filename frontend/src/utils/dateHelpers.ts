@@ -101,3 +101,29 @@ export const getISTOffset = (): string => {
   return '+05:30';
 };
 
+/**
+ * Check if a time slot is in the past for a given date
+ * Used to hide past time slots when selecting today's date
+ */
+export const isTimeSlotInPast = (date: Date, time: string): boolean => {
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  
+  const checkDate = new Date(date);
+  checkDate.setHours(0, 0, 0, 0);
+  
+  // If the date is not today, the time slot is not in the past
+  if (checkDate.getTime() !== today.getTime()) {
+    return false;
+  }
+  
+  // If the date is today, check if the time has passed
+  const [hours, minutes] = time.split(':');
+  const slotTime = new Date();
+  slotTime.setHours(parseInt(hours, 10), parseInt(minutes, 10), 0, 0);
+  
+  const now = new Date();
+  
+  return slotTime < now;
+};
+
