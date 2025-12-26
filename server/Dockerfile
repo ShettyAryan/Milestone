@@ -1,20 +1,18 @@
-# Dockerfile for Leapcell deployment
 FROM node:20-bookworm-slim
 
 WORKDIR /app
 
-# Copy package files first (for better caching)
-COPY server/package*.json ./
+# Copy package files (correct path)
+COPY package*.json ./
 
 # Install dependencies
 RUN npm install --production
 
-# Copy all application files
-COPY server .
+# Copy rest of the app
+COPY . .
 
-# Expose port (Leapcell will set PORT automatically via env var)
+# Expose port
 EXPOSE 8080
 
-# Start the application
+# Start app
 CMD ["npm", "start"]
-
