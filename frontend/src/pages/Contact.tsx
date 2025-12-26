@@ -1,4 +1,4 @@
-import { MapPin, Phone, Mail, Clock, MessageCircle, FileText, ChevronDown } from 'lucide-react';
+import { MapPin, Phone, Mail, Clock, MessageCircle, FileText, ChevronDown, Calendar, ArrowRight } from 'lucide-react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -74,139 +74,28 @@ export default function Contact() {
             </p>
           </div>
 
-          {/* Schedule Appointment Form */}
-          <div className="bg-[#FFF8F9] rounded-3xl p-8 border border-[rgba(107,77,124,0.1)] mb-12">
-            <div className="flex items-center gap-3 mb-2">
-              <div className="w-10 h-10 rounded-full bg-[rgba(107,77,124,0.1)] flex items-center justify-center">
-                <Phone className="w-5 h-5 text-[#6B4D7C]" />
+          {/* Book Appointment CTA */}
+          <div className="bg-gradient-to-br from-[#6B4D7C] to-[#5a3d6a] rounded-3xl p-12 border border-[rgba(107,77,124,0.2)] mb-12 shadow-lg">
+            <div className="max-w-3xl mx-auto text-center">
+              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm mb-6">
+                <Calendar className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-[#3a3a3a]">Schedule Appointment</h3>
+              <h3 className="text-3xl text-white mb-4 font-semibold">
+                Ready to Schedule Your Appointment?
+              </h3>
+              <p className="text-white/90 text-lg mb-8 max-w-2xl mx-auto">
+                Book your appointment online in just a few clicks. Select your preferred date and time, and we'll confirm your visit.
+              </p>
+              <Link to="/book-appointment">
+                <button
+                  type="button"
+                  className="inline-flex items-center gap-3 px-8 py-4 bg-white text-[#6B4D7C] rounded-full hover:bg-[#FFF8F9] transition-all font-medium text-lg shadow-[0_8px_30px_rgba(0,0,0,0.2)] hover:shadow-[0_12px_40px_rgba(0,0,0,0.3)] transform hover:-translate-y-1"
+                >
+                  <span>Book Appointment Now</span>
+                  <ArrowRight className="w-5 h-5" />
+                </button>
+              </Link>
             </div>
-            <p className="text-[#7a7a7a] text-sm mb-6">
-              Fill in your details and we'll call you back to schedule your
-              appointment
-            </p>
-
-            <form className="space-y-6">
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                <div>
-                  <label
-                    htmlFor="parentName"
-                    className="block text-sm text-[#3a3a3a] mb-2"
-                  >
-                    Parent Name *
-                  </label>
-                  <input
-                    type="text"
-                    id="parentName"
-                    className="w-full px-4 py-3 rounded-xl border border-[rgba(107,77,124,0.2)] bg-white focus:outline-none focus:ring-2 focus:ring-[#6B4D7C] focus:border-transparent"
-                    placeholder="Your name"
-                  />
-                </div>
-                <div>
-                  <label
-                    htmlFor="childName"
-                    className="block text-sm text-[#3a3a3a] mb-2"
-                  >
-                    Child's Name *
-                  </label>
-                  <input
-                    type="text"
-                    id="childName"
-                    className="w-full px-4 py-3 rounded-xl border border-[rgba(107,77,124,0.2)] bg-white focus:outline-none focus:ring-2 focus:ring-[#6B4D7C] focus:border-transparent"
-                    placeholder="Child's name"
-                  />
-                </div>
-                <div>
-                  <label
-                    htmlFor="phone"
-                    className="block text-sm text-[#3a3a3a] mb-2"
-                  >
-                    Phone Number *
-                  </label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    className="w-full px-4 py-3 rounded-xl border border-[rgba(107,77,124,0.2)] bg-white focus:outline-none focus:ring-2 focus:ring-[#6B4D7C] focus:border-transparent"
-                    placeholder="+91 98765 43210"
-                  />
-                </div>
-                <div>
-                  <label
-                    htmlFor="childAge"
-                    className="block text-sm text-[#3a3a3a] mb-2"
-                  >
-                    Child's Age
-                  </label>
-                  <input
-                    type="text"
-                    id="childAge"
-                    className="w-full px-4 py-3 rounded-xl border border-[rgba(107,77,124,0.2)] bg-white focus:outline-none focus:ring-2 focus:ring-[#6B4D7C] focus:border-transparent"
-                    placeholder="e.g., 2 years 6 months"
-                  />
-                </div>
-                <div>
-                  <label
-                    htmlFor="childDOB"
-                    className="block text-sm text-[#3a3a3a] mb-2"
-                  >
-                    Child's DOB
-                  </label>
-                  <input
-                    type='date'
-                    id="childAge"
-                    className="w-full px-4 py-3 rounded-xl border border-[rgba(107,77,124,0.2)] bg-white focus:outline-none focus:ring-2 focus:ring-[#6B4D7C] focus:border-transparent"
-                    placeholder="e.g., 2 years 6 months"
-                  />
-                </div>
-              </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <label
-                    htmlFor="preferredTime"
-                    className="block text-sm text-[#3a3a3a] mb-2"
-                  >
-                    Preferred Call Time *
-                  </label>
-                  <select
-                    id="preferredTime"
-                    className="w-full px-4 py-3 rounded-xl border border-[rgba(107,77,124,0.2)] bg-white focus:outline-none focus:ring-2 focus:ring-[#6B4D7C] focus:border-transparent"
-                  >
-                    <option value="">Select time slot</option>
-                    <option value="morning">Morning (9 AM - 12 PM)</option>
-                    <option value="afternoon">Afternoon (12 PM - 4 PM)</option>
-                    <option value="evening">Evening (4 PM - 6 PM)</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="reason"
-                    className="block text-sm text-[#3a3a3a] mb-2"
-                  >
-                    Reason for Visit
-                  </label>
-                  <input
-                    type="text"
-                    id="reason"
-                    className="w-full px-4 py-3 rounded-xl border border-[rgba(107,77,124,0.2)] bg-white focus:outline-none focus:ring-2 focus:ring-[#6B4D7C] focus:border-transparent"
-                    placeholder="Brief description of your concern"
-                  />
-                </div>
-              </div>
-
-              <div className="flex justify-end">
-                <Link to="/book-appointment">
-                  <button
-                    type="button"
-                    className="px-8 py-4 bg-[#6B4D7C] text-white rounded-full hover:bg-[#5a3d6a] transition-colors"
-                  >
-                    Schedule Appointment
-                  </button>
-                </Link>
-              </div>
-            </form>
           </div>
 
           {/* Contact Information */}
