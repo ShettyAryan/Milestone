@@ -5,9 +5,13 @@ import rateLimit from 'express-rate-limit';
 import { calendarRouter } from './routes/calendar.js';
 import { sheetsRouter } from './routes/sheets.js';
 
-// Load environment variables from .env.local first, then .env
-dotenv.config({ path: '.env.local' });
-dotenv.config(); // This will override with .env if it exists
+// Load environment variables
+// In production, Leapcell sets env vars directly, so .env files are optional
+if (process.env.NODE_ENV !== 'production') {
+  // Only load .env files in development
+  dotenv.config({ path: '.env.local' });
+  dotenv.config(); // This will override with .env if it exists
+}
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -53,8 +57,13 @@ app.use((req, res) => {
   res.status(404).json({ error: 'Route not found' });
 });
 
-app.listen(PORT, () => {
-  console.log(`🚀 Server running on http://localhost:${PORT}`);
-  console.log(`📋 Health check: http://localhost:${PORT}/health`);
+app.listen(PORT, "0.0.0.0", () => {
+  if (process.env.NODE_ENV === "production") {
+    console.log(`🚀 Server running on port ${PORT}`);
+    console.log(`📋 Health check available at /health`);
+  } else {
+    console.log(`🚀 Server running on http://localhost:${PORT}`);
+    console.log(`📋 Health check: http://localhost:${PORT}/health`);
+  }
 });
 
