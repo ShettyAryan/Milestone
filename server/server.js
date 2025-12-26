@@ -12,6 +12,11 @@ dotenv.config(); // This will override with .env if it exists
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+// Health check endpoint (for deployment platforms)
+app.get('/health', (req, res) => {
+  res.json({ status: 'ok', message: 'Milestones Clinic Backend API' });
+});
+
 // CORS configuration
 const corsOptions = {
   origin: process.env.FRONTEND_URL || 'http://localhost:3000',
@@ -29,11 +34,6 @@ const limiter = rateLimit({
 });
 
 app.use('/api/', limiter);
-
-// Health check endpoint
-app.get('/health', (req, res) => {
-  res.json({ status: 'ok', message: 'Milestones Clinic Backend API' });
-});
 
 // Routes
 app.use('/api/calendar', calendarRouter);
