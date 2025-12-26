@@ -107,6 +107,29 @@ export default function BookingPage() {
       try {
         calendarEventId = await createCalendarEvent(formData, bookingId);
         toast.success('Calendar event created');
+        
+        // Immediately add the booked time to the list (optimistic update)
+        setBookedSlots((prev) => {
+          if (!prev.includes(formData.time)) {
+            return [...prev, formData.time];
+          }
+          return prev;
+        });
+        
+        // Refresh booked slots from calendar to get the latest state
+        // This ensures we have the most up-to-date list
+        if (formData.date) {
+          // Use a small delay to ensure calendar API has updated
+          setTimeout(async () => {
+            try {
+              const updatedSlots = await getAvailableSlots(formData.date!);
+              setBookedSlots(updatedSlots);
+            } catch (error) {
+              // If refresh fails, the optimistic update above will keep the slot marked as booked
+              console.error('Error refreshing slots after booking:', error);
+            }
+          }, 1000); // 1 second delay to allow calendar API to update
+        }
       } catch (error) {
         console.error('Calendar event creation failed:', error);
         toast.error('Failed to create calendar event, but booking will continue');
@@ -192,6 +215,7 @@ export default function BookingPage() {
       time: ''
     });
     setErrors({});
+    setBookedSlots([]); // Clear booked slots when starting new booking
     setStep('form');
     setBookingConfirmation(null);
   };
