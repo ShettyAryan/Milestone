@@ -33,29 +33,39 @@ Fastest way to get your website live in 15 minutes.
      ```
    - Redeploy
 
-### Backend → Railway (10 minutes)
+### Backend → Leapcell (10 minutes)
+
+**Alternative:** See Railway/Render options in `DEPLOYMENT_GUIDE.md`
 
 1. **Prepare Service Account JSON:**
    - Open `server/service-account.json`
    - Copy entire content
    - Convert to single line (remove line breaks in private_key)
 
-2. **Deploy to Railway:**
-   - Go to [railway.app](https://railway.app)
+2. **Deploy to Leapcell:**
+   - Go to [leapcell.io](https://leapcell.io)
    - Click "New Project" → "Deploy from GitHub"
    - Select your repo
    - **Root Directory**: `server`
    - **Start Command**: `npm start`
+   - **Node Version**: 18 or 20 (LTS)
 
 3. **Add Environment Variables:**
-   - Click on your service → Variables
-   - Add all variables from `server/.env.local`
-   - **Important**: For `GOOGLE_SERVICE_ACCOUNT_JSON`, paste the entire JSON as one line
-   - Update `FRONTEND_URL` with your Vercel URL
+   - Click "Environment Variables" or "Config"
+   - Add all variables:
+     ```
+     NODE_ENV=production
+     PORT=3001
+     FRONTEND_URL=https://your-frontend.vercel.app
+     GOOGLE_SERVICE_ACCOUNT_JSON={"type":"service_account",...} (single line)
+     GOOGLE_CALENDAR_ID=your_calendar_id
+     GOOGLE_SHEET_ID=your_sheet_id
+     ```
+   - **Important**: For `GOOGLE_SERVICE_ACCOUNT_JSON`, paste entire JSON as one line
 
 4. **Get Backend URL:**
-   - Railway → Settings → Generate Domain
-   - Copy the URL (e.g., `https://your-app.up.railway.app`)
+   - After deployment, Leapcell provides a URL
+   - Copy the URL (e.g., `https://your-project.leapcell.app`)
 
 5. **Update Frontend:**
    - Go back to Vercel
@@ -75,8 +85,10 @@ Fastest way to get your website live in 15 minutes.
 ## 🆘 Common Issues
 
 **Backend not starting?**
-- Check Railway logs
-- Verify `PORT` is set (Railway auto-sets, but check anyway)
+- Check Leapcell logs in dashboard
+- Verify `npm start` script exists
+- Check Node.js version (18+)
+- Verify environment variables are set
 
 **CORS errors?**
 - Ensure `FRONTEND_URL` in backend matches Vercel URL exactly
@@ -88,12 +100,12 @@ Fastest way to get your website live in 15 minutes.
 
 **Frontend can't connect to backend?**
 - Check `VITE_API_BASE_URL` is correct
-- Ensure backend is running (check Railway logs)
-- Test backend health: `https://your-backend-url.railway.app/health`
+- Ensure backend is running (check Leapcell logs)
+- Test backend health: `https://your-backend-url.leapcell.app/health`
 
 ## 📝 Environment Variables Checklist
 
-### Backend (Railway)
+### Backend (Leapcell)
 - [ ] `NODE_ENV=production`
 - [ ] `FRONTEND_URL=https://your-frontend.vercel.app`
 - [ ] `GOOGLE_SERVICE_ACCOUNT_JSON={...}` (single line JSON)

@@ -9,7 +9,6 @@ node_modules/
 .env.test.development
 .env.test.production
 service-account.json
-*.json
 *.log
 .DS_Store
 

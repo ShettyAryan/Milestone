@@ -93,7 +93,19 @@ vercel
 
 ## Backend Deployment
 
-### Option 1: Railway (Recommended)
+### Option 1: Leapcell (Recommended)
+
+See detailed guide: `server/LEAPCELL_DEPLOYMENT.md`
+
+**Quick Steps:**
+1. Sign up at [leapcell.io](https://leapcell.io)
+2. Create new project from GitHub
+3. Set root directory: `server`
+4. Start command: `npm start`
+5. Add environment variables
+6. Deploy and get your backend URL
+
+### Option 2: Railway
 
 #### Step 1: Prepare Backend
 
