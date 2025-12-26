@@ -79,7 +79,7 @@ export function Header() {
 
           {/* Desktop CTA Buttons */}
           <div className="hidden md:flex items-center gap-4">
-            <Link to="/contact">
+            <Link to="/book-appointment">
               <button className="px-6 py-2.5 bg-[#6B4D7C] text-white text-sm rounded-full hover:bg-[#5a3d6a] transition-colors">
                 Book Appointment
               </button>
@@ -159,7 +159,7 @@ export function Header() {
                 Contact
               </Link>
               <div className="flex flex-col gap-3 pt-4 border-t border-[rgba(107,77,124,0.1)]">
-                <Link to="/contact">
+                <Link to="/book-appointment">
                   <button className="px-6 py-3 bg-[#6B4D7C] text-white text-sm rounded-full hover:bg-[#5a3d6a] transition-colors">
                     Book Appointment
                   </button>

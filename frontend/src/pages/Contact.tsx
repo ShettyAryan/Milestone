@@ -1,5 +1,6 @@
 import { MapPin, Phone, Mail, Clock, MessageCircle, FileText, ChevronDown } from 'lucide-react';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const faqs = [
   {
@@ -196,12 +197,14 @@ export default function Contact() {
               </div>
 
               <div className="flex justify-end">
-                <button
-                  type="submit"
-                  className="px-8 py-4 bg-[#6B4D7C] text-white rounded-full hover:bg-[#5a3d6a] transition-colors"
-                >
-                  Schedule Appointment
-                </button>
+                <Link to="/book-appointment">
+                  <button
+                    type="button"
+                    className="px-8 py-4 bg-[#6B4D7C] text-white rounded-full hover:bg-[#5a3d6a] transition-colors"
+                  >
+                    Schedule Appointment
+                  </button>
+                </Link>
               </div>
             </form>
           </div>

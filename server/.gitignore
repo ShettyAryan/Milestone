@@ -1,0 +1,15 @@
+node_modules/
+.env
+.env.local
+.env.*
+.env.development
+.env.production
+.env.test
+.env.test.local
+.env.test.development
+.env.test.production
+service-account.json
+*.json
+*.log
+.DS_Store
+

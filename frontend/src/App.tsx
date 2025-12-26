@@ -7,6 +7,7 @@ import About from './pages/About';
 import Clinic from './pages/Clinic';
 import Blog from './pages/Blog';
 import Contact from './pages/Contact';
+import BookingPage from './pages/BookingPage';
 
 export default function App() {
   return (
@@ -21,6 +22,7 @@ export default function App() {
             <Route path="/clinic" element={<Clinic />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/book-appointment" element={<BookingPage />} />
           </Routes>
         </main>
         <FooterSection />

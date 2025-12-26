@@ -14,7 +14,7 @@ export function CTASection() {
             appointment today to meet Dr. Joshi and experience our compassionate
             care.
           </p>
-          <Link to="/contact">
+          <Link to="/book-appointment">
             <button className="px-12 py-5 bg-[#6B4D7C] text-white rounded-full hover:bg-[#5a3d6a] transition-all shadow-[0_8px_30px_rgba(107,77,124,0.3)] hover:shadow-[0_12px_40px_rgba(107,77,124,0.4)] hover:-translate-y-0.5 text-lg">
               Schedule Appointment
             </button>

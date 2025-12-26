@@ -47,16 +47,22 @@
             "sonner": "^2.0.3",
             "tailwind-merge": "*",
             "tailwindcss": "^4.1.18",
-            "vaul": "^1.1.2"
+            "vaul": "^1.1.2",
+            "@emailjs/browser": "^4.4.1",
+            "react-hot-toast": "^2.4.1"
+      },
+
+      "scripts": {
+            "dev": "vite",
+            "build": "vite build",
+            "server": "cd ../server && npm run dev",
+            "dev:all": "concurrently \"npm run dev\" \"npm run server\""
       },
       "devDependencies": {
             "@types/node": "^20.10.0",
             "@types/react": "^19.2.7",
             "@vitejs/plugin-react-swc": "^3.10.2",
-            "vite": "6.3.5"
-      },
-      "scripts": {
-            "dev": "vite",
-            "build": "vite build"
+            "vite": "6.3.5",
+            "concurrently": "^8.2.2"
       }
 }
