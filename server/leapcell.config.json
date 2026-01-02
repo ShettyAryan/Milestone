@@ -1,7 +1,0 @@
-{
-  "rootDirectory": "server",
-  "buildCommand": "npm install",
-  "startCommand": "npm start",
-  "nodeVersion": "20"
-}
-
