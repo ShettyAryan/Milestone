@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { User, Baby, Mail, Phone, FileText, Calendar } from 'lucide-react';
+import { User, Baby, Mail, Phone, FileText, Calendar, ClipboardCheck } from 'lucide-react';
 import { BookingFormData, FormErrors } from '../../types/booking.types';
 import {
   validateAge,
@@ -283,6 +283,58 @@ export function BookingForm({
           </p>
         </div>
       </div>
+
+      {/* Visited Before Checkbox */}
+      <div>
+        <label className="flex items-center space-x-3 cursor-pointer">
+          <input
+            type="checkbox"
+            checked={formData.visitedBefore}
+            onChange={(e) => {
+              handleChange('visitedBefore', e.target.checked);
+              // Clear patient code when unchecking
+              if (!e.target.checked) {
+                handleChange('patientCode', '');
+              }
+            }}
+            className="w-5 h-5 rounded border-[rgba(107,77,124,0.2)] text-[#6B4D7C] focus:ring-2 focus:ring-[#6B4D7C] cursor-pointer"
+          />
+          <span className="text-sm text-[#3a3a3a] font-medium">
+            Patient has visited before
+          </span>
+        </label>
+        {errors.visitedBefore && touched.visitedBefore && (
+          <p className="mt-1 text-sm text-red-500">{errors.visitedBefore}</p>
+        )}
+      </div>
+
+      {/* Patient Code - Only shown when visitedBefore is true */}
+      {formData.visitedBefore && (
+        <div>
+          <label htmlFor="patientCode" className="block text-sm text-[#3a3a3a] mb-2 font-medium">
+            Patient Code <span className="text-red-500">*</span>
+          </label>
+          <div className="relative">
+            <ClipboardCheck className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#7a7a7a]" />
+            <input
+              type="text"
+              id="patientCode"
+              value={formData.patientCode}
+              onChange={(e) => handleChange('patientCode', e.target.value)}
+              onBlur={() => handleBlur('patientCode')}
+              className={`w-full pl-12 pr-4 py-3 rounded-xl border ${
+                errors.patientCode && touched.patientCode
+                  ? 'border-red-500'
+                  : 'border-[rgba(107,77,124,0.2)]'
+              } bg-white focus:outline-none focus:ring-2 focus:ring-[#6B4D7C] focus:border-transparent`}
+              placeholder="Enter patient code"
+            />
+          </div>
+          {errors.patientCode && touched.patientCode && (
+            <p className="mt-1 text-sm text-red-500">{errors.patientCode}</p>
+          )}
+        </div>
+      )}
     </div>
   );
 }

@@ -9,6 +9,8 @@ export interface BookingFormData {
   email: string;
   phone: string;
   reason: string;
+  visitedBefore: boolean;
+  patientCode: string;
   date: Date | null;
   time: string;
 }
@@ -31,6 +33,8 @@ export interface BookingConfirmation {
   email: string;
   phone: string;
   reason: string;
+  visitedBefore: boolean;
+  patientCode: string;
   appointmentDate: Date;
   appointmentTime: string;
   status: 'confirmed' | 'pending' | 'cancelled';
@@ -47,6 +51,8 @@ export interface FormErrors {
   email?: string;
   phone?: string;
   reason?: string;
+  visitedBefore?: string;
+  patientCode?: string;
   date?: string;
   time?: string;
 }

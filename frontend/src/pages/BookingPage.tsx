@@ -38,6 +38,8 @@ export default function BookingPage() {
     email: '',
     phone: '',
     reason: '',
+    visitedBefore: false,
+    patientCode: '',
     date: null,
     time: ''
   });
@@ -224,6 +226,8 @@ export default function BookingPage() {
           email: formData.email,
           phone: formData.phone,
           reason: formData.reason,
+          visitedBefore: formData.visitedBefore,
+          patientCode: formData.patientCode,
           appointmentDate: formData.date!,
           appointmentTime: formData.time,
           status: 'confirmed'
@@ -248,6 +252,8 @@ export default function BookingPage() {
           email: formData.email,
           phone: formData.phone,
           reason: formData.reason,
+          visitedBefore: formData.visitedBefore,
+          patientCode: formData.patientCode,
           appointmentDate: formData.date!,
           appointmentTime: formData.time,
           status: 'confirmed'
@@ -271,6 +277,8 @@ export default function BookingPage() {
         email: formData.email,
         phone: formData.phone,
         reason: formData.reason,
+        visitedBefore: formData.visitedBefore,
+        patientCode: formData.patientCode,
         appointmentDate: formData.date!,
         appointmentTime: formData.time,
         status: 'confirmed'
@@ -302,6 +310,8 @@ export default function BookingPage() {
       email: '',
       phone: '',
       reason: '',
+      visitedBefore: false,
+      patientCode: '',
       date: null,
       time: ''
     });

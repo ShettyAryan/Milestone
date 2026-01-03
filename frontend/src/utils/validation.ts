@@ -145,6 +145,19 @@ export const validateAppointmentType = (appointmentType: string): string | undef
   return undefined;
 };
 
+export const validatePatientCode = (patientCode: string, visitedBefore: boolean): string | undefined => {
+  // Only validate if visitedBefore is true
+  if (visitedBefore) {
+    if (!patientCode || patientCode.trim().length === 0) {
+      return 'Patient code is required';
+    }
+    if (patientCode.trim().length < 2) {
+      return 'Patient code must be at least 2 characters';
+    }
+  }
+  return undefined;
+};
+
 export const validateBookingForm = (formData: BookingFormData): FormErrors => {
   const errors: FormErrors = {};
   
@@ -177,6 +190,10 @@ export const validateBookingForm = (formData: BookingFormData): FormErrors => {
   
   const reasonError = validateReason(formData.reason);
   if (reasonError) errors.reason = reasonError;
+  
+  // Validate patient code only if visitedBefore is true
+  const patientCodeError = validatePatientCode(formData.patientCode, formData.visitedBefore);
+  if (patientCodeError) errors.patientCode = patientCodeError;
   
   const dateError = validateDate(formData.date, formData.appointmentType);
   if (dateError) errors.date = dateError;

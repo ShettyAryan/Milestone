@@ -70,6 +70,8 @@ export const formatBookingForSheets = (bookingData: any): any[] => {
     bookingData.email,
     bookingData.phone,
     bookingData.reason,
+    bookingData.visitedBefore ? 'Yes' : 'No',
+    bookingData.patientCode || '',
     appointmentDate,
     bookingData.appointmentTime,
     bookingData.status
