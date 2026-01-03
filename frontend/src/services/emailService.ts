@@ -27,10 +27,11 @@ export const sendConfirmationEmail = async (
       appointment_date: formatDateDisplay(bookingData.appointmentDate),
       appointment_time: formatTimeDisplay(bookingData.appointmentTime),
       reason: bookingData.reason,
-      clinic_name: 'Milestones Child Clinic',
-      clinic_address: '123 Marine Drive, Churchgate, Mumbai, Maharashtra 400020',
-      clinic_phone: '+91 98765 43210',
-      clinic_email: 'info@milestoneschildclinic.com'
+      clinic_name: "Milestones Child Clinic",
+      clinic_address:
+        "G-2, Princeton Building, NS Road No. 10, Sainath Nagar, Mumbai, Maharashtra 400049",
+      clinic_phone: "+91 91371 69856",
+      clinic_email: "admin@milestoneschildclinic.com",
     };
 
     await emailjs.send(serviceId, templateId, templateParams, publicKey);
@@ -57,30 +58,30 @@ export const generateICSFile = (bookingData: BookingConfirmation): string => {
   };
 
   const icsContent = [
-    'BEGIN:VCALENDAR',
-    'VERSION:2.0',
-    'PRODID:-//Milestones Child Clinic//Appointment Booking//EN',
-    'CALSCALE:GREGORIAN',
-    'METHOD:REQUEST',
-    'BEGIN:VEVENT',
+    "BEGIN:VCALENDAR",
+    "VERSION:2.0",
+    "PRODID:-//Milestones Child Clinic//Appointment Booking//EN",
+    "CALSCALE:GREGORIAN",
+    "METHOD:REQUEST",
+    "BEGIN:VEVENT",
     `DTSTART:${formatICSDate(startDate)}`,
     `DTEND:${formatICSDate(endDate)}`,
     `DTSTAMP:${formatICSDate(new Date())}`,
     `UID:${bookingData.bookingId}@milestoneschildclinic.com`,
     `SUMMARY:Appointment - ${bookingData.childFirstName} ${bookingData.childLastName}`,
     `DESCRIPTION:Booking ID: ${bookingData.bookingId}\\nParent: ${bookingData.parentFirstName} ${bookingData.parentLastName}\\nChild: ${bookingData.childFirstName} ${bookingData.childLastName}\\nReason: ${bookingData.reason}`,
-    `LOCATION:Milestones Child Clinic, 123 Marine Drive, Churchgate, Mumbai, Maharashtra 400020`,
-    `ORGANIZER;CN=Milestones Child Clinic:mailto:info@milestoneschildclinic.com`,
+    `LOCATION:Milestones Child Clinic, G-2, Princeton Building, NS Road No. 10, Sainath Nagar, Mumbai, Maharashtra 400049`,
+    `ORGANIZER;CN=Milestones Child Clinic:mailto:admin@milestoneschildclinic.com`,
     `ATTENDEE;CN=${bookingData.parentFirstName} ${bookingData.parentLastName};RSVP=TRUE:mailto:${bookingData.email}`,
-    'STATUS:CONFIRMED',
-    'SEQUENCE:0',
-    'BEGIN:VALARM',
-    'TRIGGER:-PT24H',
-    'ACTION:EMAIL',
-    'END:VALARM',
-    'END:VEVENT',
-    'END:VCALENDAR'
-  ].join('\r\n');
+    "STATUS:CONFIRMED",
+    "SEQUENCE:0",
+    "BEGIN:VALARM",
+    "TRIGGER:-PT24H",
+    "ACTION:EMAIL",
+    "END:VALARM",
+    "END:VEVENT",
+    "END:VCALENDAR",
+  ].join("\r\n");
 
   return icsContent;
 };

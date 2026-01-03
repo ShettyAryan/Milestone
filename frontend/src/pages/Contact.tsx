@@ -1,3 +1,4 @@
+import React from 'react';
 import { MapPin, Phone, Mail, Clock, MessageCircle, FileText, ChevronDown, Calendar, ArrowRight } from 'lucide-react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
@@ -84,7 +85,8 @@ export default function Contact() {
                 Ready to Schedule Your Appointment?
               </h3>
               <p className="text-white/90 text-lg mb-8 max-w-2xl mx-auto">
-                Book your appointment online in just a few clicks. Select your preferred date and time, and we'll confirm your visit.
+                Book your appointment online in just a few clicks. Select your
+                preferred date and time, and we'll confirm your visit.
               </p>
               <Link to="/book-appointment">
                 <button
@@ -112,9 +114,9 @@ export default function Contact() {
                     <p className="text-[#7a7a7a] text-sm">
                       Milestones Child Clinic
                       <br />
-                      123 Marine Drive, Churchgate
+                      G-2, Princeton Building, NS Road No. 10, Sainath Nagar
                       <br />
-                      Mumbai, Maharashtra 400020
+                      Mumbai, Maharashtra 400049
                       <br />
                       India
                     </p>
@@ -128,9 +130,8 @@ export default function Contact() {
                   <div>
                     <h4 className="text-[#3a3a3a] mb-1">Phone Numbers</h4>
                     <p className="text-[#7a7a7a] text-sm">
-                      Main: +91 98765 43210
+                      Main: +91 91371 69856
                       <br />
-                      Emergency: +91 98765 43211
                     </p>
                   </div>
                 </div>
@@ -142,9 +143,8 @@ export default function Contact() {
                   <div>
                     <h4 className="text-[#3a3a3a] mb-1">Email</h4>
                     <p className="text-[#7a7a7a] text-sm">
-                      info@milestoneschildclinic.com
+                      admin@milestoneschildclinic.com
                       <br />
-                      dr.joshi@milestoneschildclinic.com
                     </p>
                   </div>
                 </div>
@@ -156,13 +156,14 @@ export default function Contact() {
                   <div>
                     <h4 className="text-[#3a3a3a] mb-1">Clinic Hours</h4>
                     <p className="text-[#7a7a7a] text-sm">
-                      Monday - Friday: 9:00 AM - 6:00 PM
+                      Monday, Wednesday and Friday: 7:00 PM - 9:00 PM (ONLINE
+                      MODE ONLY)
                       <br />
-                      Saturday: 9:00 AM - 2:00 PM
+                      Tuesday, Thursday and Saturday: 7:00 PM - 9:00 PM (OFFLINE
+                      MODE ONLY)
                       <br />
-                      Sunday: By Appointment Only
+                      Sunday: No Appointments
                       <br />
-                      Emergency: 24/7 Available
                     </p>
                   </div>
                 </div>

@@ -1,3 +1,4 @@
+import React from 'react';
 import { CheckCircle, Printer, Share2, Calendar, Clock, User, Baby, Mail, Phone, FileText, Monitor, Building2 } from 'lucide-react';
 import { BookingConfirmation as BookingConfirmationType } from '../../types/booking.types';
 import { formatDateDisplay, formatTimeDisplay } from '../../utils/dateHelpers';
@@ -27,7 +28,9 @@ export function BookingConfirmation({ bookingData, onBookAnother }: BookingConfi
           <div className="inline-flex items-center justify-center w-24 h-24 rounded-full bg-[#6B4D7C] mb-6">
             <CheckCircle className="w-16 h-16 text-white" />
           </div>
-          <h1 className="text-4xl text-[#3a3a3a] mb-3">Appointment Confirmed!</h1>
+          <h1 className="text-4xl text-[#3a3a3a] mb-3">
+            Appointment Confirmed!
+          </h1>
           <p className="text-lg text-[#7a7a7a]">
             Your appointment has been successfully booked
           </p>
@@ -38,14 +41,16 @@ export function BookingConfirmation({ bookingData, onBookAnother }: BookingConfi
           {/* Booking ID */}
           <div className="text-center mb-8 pb-6 border-b border-[rgba(107,77,124,0.1)]">
             <p className="text-sm text-[#7a7a7a] mb-2">Booking ID</p>
-            <p className="text-2xl font-bold text-[#6B4D7C]">{bookingData.bookingId}</p>
+            <p className="text-2xl font-bold text-[#6B4D7C]">
+              {bookingData.bookingId}
+            </p>
           </div>
 
           {/* Appointment Details */}
           <div className="space-y-6 mb-8">
             <div className="flex items-start gap-4">
               <div className="w-12 h-12 rounded-full bg-[rgba(107,77,124,0.1)] flex items-center justify-center flex-shrink-0">
-                {bookingData.appointmentType === 'online' ? (
+                {bookingData.appointmentType === "online" ? (
                   <Monitor className="w-6 h-6 text-[#6B4D7C]" />
                 ) : (
                   <Building2 className="w-6 h-6 text-[#6B4D7C]" />
@@ -54,7 +59,9 @@ export function BookingConfirmation({ bookingData, onBookAnother }: BookingConfi
               <div>
                 <p className="text-sm text-[#7a7a7a] mb-1">Appointment Type</p>
                 <p className="text-lg text-[#3a3a3a] font-medium">
-                  {bookingData.appointmentType === 'online' ? 'Online' : 'Offline'}
+                  {bookingData.appointmentType === "online"
+                    ? "Online"
+                    : "Offline"}
                 </p>
               </div>
             </div>
@@ -109,11 +116,15 @@ export function BookingConfirmation({ bookingData, onBookAnother }: BookingConfi
                 </p>
                 {bookingData.dateOfBirth && (
                   <p className="text-sm text-[#7a7a7a]">
-                    Date of Birth: {new Date(bookingData.dateOfBirth).toLocaleDateString('en-IN', {
-                      year: 'numeric',
-                      month: 'long',
-                      day: 'numeric'
-                    })}
+                    Date of Birth:{" "}
+                    {new Date(bookingData.dateOfBirth).toLocaleDateString(
+                      "en-IN",
+                      {
+                        year: "numeric",
+                        month: "long",
+                        day: "numeric",
+                      }
+                    )}
                   </p>
                 )}
               </div>
@@ -158,11 +169,23 @@ export function BookingConfirmation({ bookingData, onBookAnother }: BookingConfi
 
           {/* Clinic Information */}
           <div className="bg-[#FFF8F9] rounded-2xl p-6 border border-[rgba(107,77,124,0.1)]">
-            <h3 className="text-lg text-[#3a3a3a] mb-4 font-medium">Clinic Information</h3>
+            <h3 className="text-lg text-[#3a3a3a] mb-4 font-medium">
+              Clinic Information
+            </h3>
             <div className="space-y-2 text-sm text-[#7a7a7a]">
-              <p><strong className="text-[#3a3a3a]">Address:</strong> 123 Marine Drive, Churchgate, Mumbai, Maharashtra 400020</p>
-              <p><strong className="text-[#3a3a3a]">Phone:</strong> +91 98765 43210</p>
-              <p><strong className="text-[#3a3a3a]">Email:</strong> info@milestoneschildclinic.com</p>
+              <p>
+                <strong className="text-[#3a3a3a]">Address:</strong> G-2,
+                Princeton Building, NS Road No. 10, Sainath Nagar Mumbai,
+                Maharashtra 400049
+              </p>
+              <p>
+                <strong className="text-[#3a3a3a]">Phone:</strong> +91
+                9137169856
+              </p>
+              <p>
+                <strong className="text-[#3a3a3a]">Email:</strong>{" "}
+                admin@milestoneschildclinic.com
+              </p>
             </div>
           </div>
         </div>
@@ -196,23 +219,34 @@ export function BookingConfirmation({ bookingData, onBookAnother }: BookingConfi
 
         {/* Important Notes */}
         <div className="bg-[rgba(207,237,234,0.2)] rounded-2xl p-6 border border-[rgba(107,77,124,0.1)]">
-          <h3 className="text-lg text-[#3a3a3a] mb-3 font-medium">Important Notes</h3>
+          <h3 className="text-lg text-[#3a3a3a] mb-3 font-medium">
+            Important Notes
+          </h3>
           <ul className="space-y-2 text-sm text-[#7a7a7a]">
             <li className="flex items-start gap-2">
               <span className="text-[#6B4D7C] mt-1">•</span>
-              <span>Please arrive 10 minutes before your appointment time.</span>
+              <span>
+                Please arrive 10 minutes before your appointment time.
+              </span>
             </li>
             <li className="flex items-start gap-2">
               <span className="text-[#6B4D7C] mt-1">•</span>
-              <span>Bring your child's previous medical records if available.</span>
+              <span>
+                Bring your child's previous medical records if available.
+              </span>
             </li>
             <li className="flex items-start gap-2">
               <span className="text-[#6B4D7C] mt-1">•</span>
-              <span>If you need to reschedule or cancel, please call us at least 24 hours in advance.</span>
+              <span>
+                If you need to reschedule or cancel, please call us at least 24
+                hours in advance.
+              </span>
             </li>
             <li className="flex items-start gap-2">
               <span className="text-[#6B4D7C] mt-1">•</span>
-              <span>A confirmation email has been sent to {bookingData.email}</span>
+              <span>
+                A confirmation email has been sent to {bookingData.email}
+              </span>
             </li>
           </ul>
         </div>

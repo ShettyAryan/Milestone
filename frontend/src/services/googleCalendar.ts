@@ -20,15 +20,21 @@ export const createCalendarEvent = async (
     endDateTime.setMinutes(endDateTime.getMinutes() + 15); // 15-minute appointment
 
     const response = await fetch(`${API_BASE_URL}/calendar/events`, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json'
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        summary: `Appointment (${bookingData.appointmentType === 'online' ? 'Online' : 'Offline'}): ${bookingData.childFirstName} ${bookingData.childLastName} - Milestones Child Clinic`,
+        summary: `Appointment (${
+          bookingData.appointmentType === "online" ? "Online" : "Offline"
+        }): ${bookingData.childFirstName} ${
+          bookingData.childLastName
+        } - Milestones Child Clinic`,
         description: `
 Booking ID: ${bookingId}
-Appointment Type: ${bookingData.appointmentType === 'online' ? 'Online' : 'Offline'}
+Appointment Type: ${
+          bookingData.appointmentType === "online" ? "Online" : "Offline"
+        }
 Parent Name: ${bookingData.parentFirstName} ${bookingData.parentLastName}
 Child Name: ${bookingData.childFirstName} ${bookingData.childLastName}
 Age: ${bookingData.age} years
@@ -37,12 +43,12 @@ Email: ${bookingData.email}
 Reason: ${bookingData.reason}
 
 Clinic: Milestones Child Clinic
-Address: 123 Marine Drive, Churchgate, Mumbai, Maharashtra 400020
-Phone: +91 98765 43210
+Address: G-2, Princeton Building, NS Road No. 10, Sainath Nagar, Mumbai, Maharashtra 400049
+Phone: +91 91371 69856
         `.trim(),
         startDateTime: appointmentDateTime.toISOString(),
-        endDateTime: endDateTime.toISOString()
-      })
+        endDateTime: endDateTime.toISOString(),
+      }),
     });
 
     if (!response.ok) {
