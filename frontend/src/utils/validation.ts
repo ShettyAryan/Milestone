@@ -113,12 +113,11 @@ export const validateDate = (date: Date | null, appointmentType: 'online' | 'off
   if (appointmentType) {
     const dayOfWeek = selectedDate.getDay();
     if (appointmentType === 'online') {
-      // Online: Monday (1), Wednesday (3), Friday (5)
-      if (dayOfWeek !== 1 && dayOfWeek !== 3 && dayOfWeek !== 5) {
-        return 'Online appointments are only available on Monday, Wednesday, and Friday';
-      }
+      // Online: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday (all days except Sunday)
+      // Sunday is already checked above, so any day is valid for online
+      // No additional validation needed - all days except Sunday are valid
     } else if (appointmentType === 'offline') {
-      // Offline: Tuesday (2), Thursday (4), Saturday (6)
+      // Offline: Tuesday (2), Thursday (4), Saturday (6) only
       if (dayOfWeek !== 2 && dayOfWeek !== 4 && dayOfWeek !== 6) {
         return 'Offline appointments are only available on Tuesday, Thursday, and Saturday';
       }

@@ -1,3 +1,4 @@
+import React from 'react';
 import { Monitor, Building2 } from 'lucide-react';
 import { FormErrors } from '../../types/booking.types';
 
@@ -43,7 +44,7 @@ export function AppointmentTypeSelector({
               Online
             </p>
             <p className="text-xs text-[#7a7a7a] mt-1">
-              Mon, Wed, Fri
+              Mon, Tue, Wed, Thu, Fri, Sat
             </p>
           </div>
         </button>

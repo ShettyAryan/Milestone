@@ -24,8 +24,8 @@ export const getAvailableDates = (year: number, month: number): Date[] => {
 
 /**
  * Check if a date is available based on appointment type
- * Online: Monday (1), Wednesday (3), Friday (5)
- * Offline: Tuesday (2), Thursday (4), Saturday (6)
+ * Online: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday (all days except Sunday)
+ * Offline: Tuesday (2), Thursday (4), Saturday (6) only
  * Sunday (0) is never available
  */
 export const isDateAvailable = (date: Date, appointmentType: 'online' | 'offline' | '' = ''): boolean => {
@@ -48,10 +48,11 @@ export const isDateAvailable = (date: Date, appointmentType: 'online' | 'offline
   const dayOfWeek = checkDate.getDay();
   
   if (appointmentType === 'online') {
-    // Online: Monday (1), Wednesday (3), Friday (5)
-    return dayOfWeek === 1 || dayOfWeek === 3 || dayOfWeek === 5;
+    // Online: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday (all days except Sunday)
+    // Since Sunday is already filtered out above, all remaining days are valid for online
+    return true;
   } else if (appointmentType === 'offline') {
-    // Offline: Tuesday (2), Thursday (4), Saturday (6)
+    // Offline: Tuesday (2), Thursday (4), Saturday (6) only
     return dayOfWeek === 2 || dayOfWeek === 4 || dayOfWeek === 6;
   }
   
