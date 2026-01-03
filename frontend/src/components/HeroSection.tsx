@@ -1,3 +1,4 @@
+import React from 'react';
 import { Play, Star } from 'lucide-react';
 
 import svgPaths from "../imports/svg-v6tm062ua4";
