@@ -1,3 +1,4 @@
+import React from 'react';  
 import { GraduationCap, Globe, Heart, Stethoscope, Award, Building } from 'lucide-react';
 
 
@@ -25,7 +26,7 @@ export function AboutSection() {
             <div className="flex">
               <div className="relative w-full rounded-2xl overflow-hidden shadow-[0px_8px_10px_0px_rgba(107,77,124,0.1),0px_20px_25px_0px_rgba(107,77,124,0.1)]">
                 <img
-                  src="https://res.cloudinary.com/dzq2acoyj/image/upload/v1766584299/IMAGE3_nirpyj.png"
+                  src="https://res.cloudinary.com/dsvgadc5d/image/upload/v1767445770/IMAGE3_lqbv2m.png"
                   alt="Dr. Vinay H. Joshi"
                   className="w-full h-full object-cover"
                 />

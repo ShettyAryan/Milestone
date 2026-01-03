@@ -43,10 +43,9 @@ export function HeroSection() {
             </div>
 
             {/* Description */}
-            <p className="text-[#5a5a5a] text-lg leading-relaxed max-w-xl">
-              World-class neonatal and pediatric intensive care, now in Mumbai.
-              From high-risk newborns to cardiac critical care - every child
-              receives compassionate, evidence-based treatment.
+            <p className="text-[#5a5a5a] text-xl leading-relaxed max-w-xl italic">
+              "Every life saved is not just a number; it's a story of
+              resilience, faith and teamwork." <br />- Dr. Vinay H. Joshi
             </p>
 
             {/* CTA Buttons */}
@@ -70,17 +69,17 @@ export function HeroSection() {
               <div className="flex items-center gap-4">
                 <div className="flex -space-x-3">
                   <img
-                    src="https://res.cloudinary.com/dzq2acoyj/image/upload/v1766586676/f578f9c2a181ef669150341163e63e6e9da01878_bvo505.jpg"
+                    src="https://res.cloudinary.com/dsvgadc5d/image/upload/v1767445549/review1_dtilcq.jpg"
                     alt=""
                     className="w-11 h-11 rounded-full border-3 border-white object-cover shadow-md"
                   />
                   <img
-                    src="https://res.cloudinary.com/dzq2acoyj/image/upload/v1766586676/ec901f1c0d6bdc3abb3b7f2578c96a444ee001e2_wtplqk.jpg"
+                    src="https://res.cloudinary.com/dsvgadc5d/image/upload/v1767445557/review2_copy_v1cpt7.jpg"
                     alt=""
                     className="w-11 h-11 rounded-full border-3 border-white object-cover shadow-md"
                   />
                   <img
-                    src="https://res.cloudinary.com/dzq2acoyj/image/upload/v1766586676/410c340aa057242400c608368f918307cdd72438_caa5d1.jpg"
+                    src="https://res.cloudinary.com/dsvgadc5d/image/upload/v1767445560/review3_copy_adaxqf.jpg"
                     alt=""
                     className="w-11 h-11 rounded-full border-3 border-white object-cover shadow-md"
                   />
@@ -181,10 +180,8 @@ export function HeroSection() {
                   </svg>
                 </div>
                 <div>
-                  <p className="text-sm text-[#2a2a2a]">Board Certified</p>
-                  <p className="text-xs text-[#5a5a5a]">
-                    Pediatric Specialists
-                  </p>
+                  <p className="text-sm text-[#2a2a2a]">Dr. Vinay H. Joshi</p>
+                  <p className="text-xs text-[#5a5a5a]">Pediatric Specialist</p>
                 </div>
               </div>
             </div>
