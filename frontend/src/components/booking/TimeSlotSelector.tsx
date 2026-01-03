@@ -22,7 +22,16 @@ export function TimeSlotSelector({
   const timeSlots = generateTimeSlots();
 
   const isSlotBooked = (time: string): boolean => {
-    return bookedSlots.includes(time);
+    if (!bookedSlots || bookedSlots.length === 0) {
+      return false;
+    }
+    // Normalize time format to ensure exact match (HH:MM)
+    const normalizedTime = time.trim();
+    return bookedSlots.some((bookedSlot) => {
+      if (!bookedSlot) return false;
+      const normalizedBooked = String(bookedSlot).trim();
+      return normalizedBooked === normalizedTime;
+    });
   };
 
   const isSlotSelected = (time: string): boolean => {
@@ -30,7 +39,7 @@ export function TimeSlotSelector({
   };
 
   const isSlotAvailable = (time: string): boolean => {
-    // Check if slot is booked
+    // Check if slot is booked - if booked, it's not available
     if (isSlotBooked(time)) {
       return false;
     }

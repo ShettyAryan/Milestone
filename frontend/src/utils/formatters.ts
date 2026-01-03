@@ -60,6 +60,7 @@ export const formatBookingForSheets = (bookingData: any): any[] => {
   return [
     timestamp,
     bookingData.bookingId,
+    bookingData.appointmentType || '',
     bookingData.parentFirstName,
     bookingData.parentLastName,
     bookingData.childFirstName,

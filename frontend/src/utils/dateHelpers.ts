@@ -23,16 +23,39 @@ export const getAvailableDates = (year: number, month: number): Date[] => {
 };
 
 /**
- * Check if a date is available (not Sunday and not in the past)
+ * Check if a date is available based on appointment type
+ * Online: Monday (1), Wednesday (3), Friday (5)
+ * Offline: Tuesday (2), Thursday (4), Saturday (6)
+ * Sunday (0) is never available
  */
-export const isDateAvailable = (date: Date): boolean => {
+export const isDateAvailable = (date: Date, appointmentType: 'online' | 'offline' | '' = ''): boolean => {
   const today = new Date();
   today.setHours(0, 0, 0, 0);
   
   const checkDate = new Date(date);
   checkDate.setHours(0, 0, 0, 0);
   
-  return checkDate >= today && checkDate.getDay() !== 0;
+  // Cannot be in the past or Sunday
+  if (checkDate < today || checkDate.getDay() === 0) {
+    return false;
+  }
+  
+  // If no appointment type selected, allow any day except Sunday
+  if (!appointmentType) {
+    return true;
+  }
+  
+  const dayOfWeek = checkDate.getDay();
+  
+  if (appointmentType === 'online') {
+    // Online: Monday (1), Wednesday (3), Friday (5)
+    return dayOfWeek === 1 || dayOfWeek === 3 || dayOfWeek === 5;
+  } else if (appointmentType === 'offline') {
+    // Offline: Tuesday (2), Thursday (4), Saturday (6)
+    return dayOfWeek === 2 || dayOfWeek === 4 || dayOfWeek === 6;
+  }
+  
+  return false;
 };
 
 /**
@@ -58,16 +81,18 @@ export const formatDateForAPI = (date: Date): string => {
 };
 
 /**
- * Get time slots for a day (9:00 AM to 5:00 PM, 30-minute intervals)
+ * Get time slots for a day (7:00 PM to 9:00 PM, 15-minute intervals)
  */
 export const generateTimeSlots = (): string[] => {
   const slots: string[] = [];
-  const startHour = 9; // 9 AM
-  const endHour = 17; // 5 PM
+  const startHour = 19; // 7 PM
+  const endHour = 21; // 9 PM
   
   for (let hour = startHour; hour < endHour; hour++) {
     slots.push(`${String(hour).padStart(2, '0')}:00`);
+    slots.push(`${String(hour).padStart(2, '0')}:15`);
     slots.push(`${String(hour).padStart(2, '0')}:30`);
+    slots.push(`${String(hour).padStart(2, '0')}:45`);
   }
   
   return slots;

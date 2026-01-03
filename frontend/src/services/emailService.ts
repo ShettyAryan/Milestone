@@ -50,7 +50,7 @@ export const generateICSFile = (bookingData: BookingConfirmation): string => {
   startDate.setHours(parseInt(hours, 10), parseInt(minutes, 10), 0, 0);
   
   const endDate = new Date(startDate);
-  endDate.setMinutes(endDate.getMinutes() + 30);
+  endDate.setMinutes(endDate.getMinutes() + 15);
 
   const formatICSDate = (date: Date): string => {
     return date.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';

@@ -131,12 +131,20 @@ router.get('/events', async (req, res) => {
     });
 
     // Extract booked time slots
+    // Events are stored in Asia/Kolkata timezone, extract times in that timezone
     const bookedSlots = [];
     response.data.items?.forEach((event) => {
       if (event.start?.dateTime) {
         const eventStart = new Date(event.start.dateTime);
-        const hours = String(eventStart.getHours()).padStart(2, '0');
-        const minutes = String(eventStart.getMinutes()).padStart(2, '0');
+        // Convert to IST (Asia/Kolkata) timezone for accurate hour extraction
+        const istTimeString = eventStart.toLocaleString('en-US', {
+          timeZone: 'Asia/Kolkata',
+          hour12: false,
+          hour: '2-digit',
+          minute: '2-digit'
+        });
+        // Format as HH:MM
+        const [hours, minutes] = istTimeString.split(':');
         bookedSlots.push(`${hours}:${minutes}`);
       }
     });
@@ -167,11 +175,15 @@ router.get('/availability', async (req, res) => {
       return res.status(400).json({ error: 'Date query parameter is required (YYYY-MM-DD)' });
     }
 
-    const startOfDay = new Date(date);
-    startOfDay.setHours(0, 0, 0, 0);
+    // Parse date string (YYYY-MM-DD) and create start/end of day in IST timezone
+    // We need to explicitly handle IST to ensure correct query range
+    const [year, month, day] = date.split('-').map(Number);
     
-    const endOfDay = new Date(date);
-    endOfDay.setHours(23, 59, 59, 999);
+    // Create date in IST timezone (UTC+5:30)
+    // Start of day: YYYY-MM-DD 00:00:00 IST
+    const startOfDayIST = new Date(`${year}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}T00:00:00+05:30`);
+    // End of day: YYYY-MM-DD 23:59:59 IST
+    const endOfDayIST = new Date(`${year}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}T23:59:59.999+05:30`);
 
     const auth = getAuth();
     const authClient = await auth.getClient();
@@ -180,19 +192,27 @@ router.get('/availability', async (req, res) => {
 
     const response = await calendar.events.list({
       calendarId: calendarId,
-      timeMin: startOfDay.toISOString(),
-      timeMax: endOfDay.toISOString(),
+      timeMin: startOfDayIST.toISOString(),
+      timeMax: endOfDayIST.toISOString(),
       singleEvents: true,
       orderBy: 'startTime'
     });
 
     // Extract booked time slots
+    // Events are stored in Asia/Kolkata timezone, extract times in that timezone
     const bookedSlots = [];
     response.data.items?.forEach((event) => {
       if (event.start?.dateTime) {
         const eventStart = new Date(event.start.dateTime);
-        const hours = String(eventStart.getHours()).padStart(2, '0');
-        const minutes = String(eventStart.getMinutes()).padStart(2, '0');
+        // Convert to IST (Asia/Kolkata) timezone for accurate hour extraction
+        const istTimeString = eventStart.toLocaleString('en-US', {
+          timeZone: 'Asia/Kolkata',
+          hour12: false,
+          hour: '2-digit',
+          minute: '2-digit'
+        });
+        // Format as HH:MM
+        const [hours, minutes] = istTimeString.split(':');
         bookedSlots.push(`${hours}:${minutes}`);
       }
     });

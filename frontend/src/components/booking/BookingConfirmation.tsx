@@ -1,4 +1,4 @@
-import { CheckCircle, Printer, Share2, Calendar, Clock, User, Baby, Mail, Phone, FileText } from 'lucide-react';
+import { CheckCircle, Printer, Share2, Calendar, Clock, User, Baby, Mail, Phone, FileText, Monitor, Building2 } from 'lucide-react';
 import { BookingConfirmation as BookingConfirmationType } from '../../types/booking.types';
 import { formatDateDisplay, formatTimeDisplay } from '../../utils/dateHelpers';
 
@@ -43,6 +43,22 @@ export function BookingConfirmation({ bookingData, onBookAnother }: BookingConfi
 
           {/* Appointment Details */}
           <div className="space-y-6 mb-8">
+            <div className="flex items-start gap-4">
+              <div className="w-12 h-12 rounded-full bg-[rgba(107,77,124,0.1)] flex items-center justify-center flex-shrink-0">
+                {bookingData.appointmentType === 'online' ? (
+                  <Monitor className="w-6 h-6 text-[#6B4D7C]" />
+                ) : (
+                  <Building2 className="w-6 h-6 text-[#6B4D7C]" />
+                )}
+              </div>
+              <div>
+                <p className="text-sm text-[#7a7a7a] mb-1">Appointment Type</p>
+                <p className="text-lg text-[#3a3a3a] font-medium">
+                  {bookingData.appointmentType === 'online' ? 'Online' : 'Offline'}
+                </p>
+              </div>
+            </div>
+
             <div className="flex items-start gap-4">
               <div className="w-12 h-12 rounded-full bg-[rgba(107,77,124,0.1)] flex items-center justify-center flex-shrink-0">
                 <Calendar className="w-6 h-6 text-[#6B4D7C]" />

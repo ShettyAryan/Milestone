@@ -91,7 +91,7 @@ export const validateReason = (reason: string): string | undefined => {
   return undefined;
 };
 
-export const validateDate = (date: Date | null): string | undefined => {
+export const validateDate = (date: Date | null, appointmentType: 'online' | 'offline' | '' = ''): string | undefined => {
   if (!date) {
     return 'Please select a date';
   }
@@ -109,6 +109,22 @@ export const validateDate = (date: Date | null): string | undefined => {
     return 'Clinic is closed on Sundays';
   }
   
+  // Check if date is available for the selected appointment type
+  if (appointmentType) {
+    const dayOfWeek = selectedDate.getDay();
+    if (appointmentType === 'online') {
+      // Online: Monday (1), Wednesday (3), Friday (5)
+      if (dayOfWeek !== 1 && dayOfWeek !== 3 && dayOfWeek !== 5) {
+        return 'Online appointments are only available on Monday, Wednesday, and Friday';
+      }
+    } else if (appointmentType === 'offline') {
+      // Offline: Tuesday (2), Thursday (4), Saturday (6)
+      if (dayOfWeek !== 2 && dayOfWeek !== 4 && dayOfWeek !== 6) {
+        return 'Offline appointments are only available on Tuesday, Thursday, and Saturday';
+      }
+    }
+  }
+  
   return undefined;
 };
 
@@ -119,8 +135,21 @@ export const validateTime = (time: string): string | undefined => {
   return undefined;
 };
 
+export const validateAppointmentType = (appointmentType: string): string | undefined => {
+  if (!appointmentType || appointmentType.trim().length === 0) {
+    return 'Please select appointment type (Online or Offline)';
+  }
+  if (appointmentType !== 'online' && appointmentType !== 'offline') {
+    return 'Please select either Online or Offline';
+  }
+  return undefined;
+};
+
 export const validateBookingForm = (formData: BookingFormData): FormErrors => {
   const errors: FormErrors = {};
+  
+  const appointmentTypeError = validateAppointmentType(formData.appointmentType);
+  if (appointmentTypeError) errors.appointmentType = appointmentTypeError;
   
   const parentFirstNameError = validateFirstName(formData.parentFirstName, "Parent's first name");
   if (parentFirstNameError) errors.parentFirstName = parentFirstNameError;
@@ -149,7 +178,7 @@ export const validateBookingForm = (formData: BookingFormData): FormErrors => {
   const reasonError = validateReason(formData.reason);
   if (reasonError) errors.reason = reasonError;
   
-  const dateError = validateDate(formData.date);
+  const dateError = validateDate(formData.date, formData.appointmentType);
   if (dateError) errors.date = dateError;
   
   const timeError = validateTime(formData.time);

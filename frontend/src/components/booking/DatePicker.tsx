@@ -5,10 +5,11 @@ import { isDateAvailable, formatDateDisplay } from '../../utils/dateHelpers';
 interface DatePickerProps {
   selectedDate: Date | null;
   onDateSelect: (date: Date) => void;
+  appointmentType: 'online' | 'offline' | '';
   error?: string;
 }
 
-export function DatePicker({ selectedDate, onDateSelect, error }: DatePickerProps) {
+export function DatePicker({ selectedDate, onDateSelect, appointmentType, error }: DatePickerProps) {
   const [currentMonth, setCurrentMonth] = useState(new Date().getMonth());
   const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
 
@@ -43,7 +44,7 @@ export function DatePicker({ selectedDate, onDateSelect, error }: DatePickerProp
 
   const handleDateClick = (day: number) => {
     const date = new Date(currentYear, currentMonth, day);
-    if (isDateAvailable(date)) {
+    if (isDateAvailable(date, appointmentType)) {
       onDateSelect(date);
     }
   };
@@ -81,6 +82,20 @@ export function DatePicker({ selectedDate, onDateSelect, error }: DatePickerProp
     return date.getDay() === 0;
   };
 
+  if (!appointmentType) {
+    return (
+      <div className="w-full">
+        <label className="block text-sm text-[#3a3a3a] mb-3 font-medium">
+          Select Date
+        </label>
+        <div className="bg-[#f5f5f5] rounded-2xl border border-[rgba(107,77,124,0.1)] p-8 text-center">
+          <Calendar className="w-12 h-12 text-[#9a9a9a] mx-auto mb-3" />
+          <p className="text-[#7a7a7a]">Please select appointment type first</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="w-full">
       <label className="block text-sm text-[#3a3a3a] mb-3 font-medium">
@@ -114,18 +129,6 @@ export function DatePicker({ selectedDate, onDateSelect, error }: DatePickerProp
           </button>
         </div>
 
-        {/* Day Labels */}
-        <div className="grid grid-cols-7 gap-2 mb-2">
-          {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map((day) => (
-            <div
-              key={day}
-              className="text-center text-xs text-[#7a7a7a] font-medium py-2"
-            >
-              {day}
-            </div>
-          ))}
-        </div>
-
         {/* Calendar Grid */}
         <div className="grid grid-cols-7 gap-2">
           {/* Empty cells for days before month starts */}
@@ -137,14 +140,14 @@ export function DatePicker({ selectedDate, onDateSelect, error }: DatePickerProp
           {Array.from({ length: daysInMonth }).map((_, index) => {
             const day = index + 1;
             const date = new Date(currentYear, currentMonth, day);
-            const available = isDateAvailable(date);
+            const available = isDateAvailable(date, appointmentType);
             const selected = isSelected(day);
             const todayDate = isToday(day);
             const past = isPast(day);
             const sunday = isSunday(day);
 
-            // Hide past dates and Sundays completely
-            if (past || sunday) {
+            // Hide past dates, Sundays, and dates not available for the selected appointment type
+            if (past || sunday || !available) {
               return null;
             }
 

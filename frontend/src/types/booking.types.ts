@@ -1,4 +1,5 @@
 export interface BookingFormData {
+  appointmentType: 'online' | 'offline' | '';
   parentFirstName: string;
   parentLastName: string;
   childFirstName: string;
@@ -20,6 +21,7 @@ export interface TimeSlot {
 
 export interface BookingConfirmation {
   bookingId: string;
+  appointmentType: 'online' | 'offline';
   parentFirstName: string;
   parentLastName: string;
   childFirstName: string;
@@ -35,6 +37,7 @@ export interface BookingConfirmation {
 }
 
 export interface FormErrors {
+  appointmentType?: string;
   parentFirstName?: string;
   parentLastName?: string;
   childFirstName?: string;

@@ -1,9 +1,10 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Calendar, Loader2 } from 'lucide-react';
 import toast, { Toaster } from 'react-hot-toast';
 import { BookingForm } from '../components/booking/BookingForm';
+import { AppointmentTypeSelector } from '../components/booking/AppointmentTypeSelector';
 import { DatePicker } from '../components/booking/DatePicker';
 import { TimeSlotSelector } from '../components/booking/TimeSlotSelector';
 import { BookingConfirmation } from '../components/booking/BookingConfirmation';
@@ -12,6 +13,7 @@ import { BookingFormData, BookingConfirmation as BookingConfirmationType, FormEr
 import { validateBookingForm, isFormValid } from '../utils/validation';
 import { generateBookingId } from '../utils/formatters';
 import { createCalendarEvent, getAvailableSlots } from '../services/googleCalendar';
+import { formatDateForAPI } from '../utils/dateHelpers';
 import { appendBookingToSheet } from '../services/googleSheets';
 import { sendConfirmationEmail } from '../services/emailService';
 
@@ -26,6 +28,7 @@ export default function BookingPage() {
   const [bookingConfirmation, setBookingConfirmation] = useState<BookingConfirmationType | null>(null);
 
   const [formData, setFormData] = useState<BookingFormData>({
+    appointmentType: '',
     parentFirstName: '',
     parentLastName: '',
     childFirstName: '',
@@ -41,26 +44,51 @@ export default function BookingPage() {
 
   const [errors, setErrors] = useState<FormErrors>({});
 
-  // Fetch available slots when date changes
+  // Reset date and time when appointment type changes
   useEffect(() => {
-    if (formData.date) {
+    if (formData.appointmentType) {
+      setFormData((prev) => ({ ...prev, date: null, time: '' }));
+      setBookedSlots([]);
+    }
+  }, [formData.appointmentType]);
+
+  // Fetch available slots when date changes
+  // Use date string as dependency to ensure it re-runs even if the same date is selected again
+  // Use formatDateForAPI to avoid timezone shift issues
+  const dateString = formData.date ? formatDateForAPI(formData.date) : null;
+  
+  useEffect(() => {
+    // Don't fetch slots if we're on the confirmation page
+    if (step === 'confirmation') {
+      return;
+    }
+    
+    if (formData.date && dateString) {
       setIsLoadingSlots(true);
+      // Always fetch fresh data from API to get the latest booked slots
+      // Add cache-busting timestamp to ensure we get the most current data
       getAvailableSlots(formData.date)
         .then((slots) => {
-          setBookedSlots(slots);
+          // Normalize API response slots - these are the ACTUAL booked slots from Google Calendar
+          const normalizedApiSlots = slots.map((slot) => slot.trim());
+          
+          // Always replace with API response - API is the source of truth for what's actually booked
+          // This ensures that after "Book Another" or page refresh, we show accurate data from Google Calendar
+          setBookedSlots(normalizedApiSlots);
         })
         .catch((error) => {
           console.error('Error fetching slots:', error);
           toast.error('Unable to fetch available slots. Please try again.');
-          setBookedSlots([]);
+          // Don't clear booked slots on error - keep existing ones
         })
         .finally(() => {
           setIsLoadingSlots(false);
         });
     } else {
+      // Clear booked slots when no date is selected
       setBookedSlots([]);
     }
-  }, [formData.date]);
+  }, [formData.date, dateString, step]);
 
   const handleFieldChange = (field: keyof BookingFormData, value: any) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
@@ -81,12 +109,21 @@ export default function BookingPage() {
   };
 
   const handleDateSelect = (date: Date) => {
-    handleFieldChange('date', date);
-    handleFieldChange('time', ''); // Reset time when date changes
+    // Reset time when date changes
+    setFormData((prev) => ({ ...prev, date, time: '' }));
+    
+    // Clear booked slots to force fresh fetch
+    // The useEffect will automatically fetch fresh slots from API when date changes
+    // This ensures we always get the latest booked slots from Google Calendar
+    setBookedSlots([]);
   };
 
   const handleTimeSelect = (time: string) => {
     handleFieldChange('time', time);
+  };
+
+  const handleAppointmentTypeSelect = (type: 'online' | 'offline') => {
+    handleFieldChange('appointmentType', type);
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -108,30 +145,65 @@ export default function BookingPage() {
       // Create calendar event
       let calendarEventId: string | null = null;
       try {
-        calendarEventId = await createCalendarEvent(formData, bookingId);
-        toast.success('Calendar event created');
+        // Normalize the booked time once for consistent use
+        const bookedTimeNormalized = formData.time.trim();
         
-        // Immediately add the booked time to the list (optimistic update)
+        // IMMEDIATELY add the booked time to the list (optimistic update)
+        // This ensures the slot disappears instantly, before API calls complete
         setBookedSlots((prev) => {
-          if (!prev.includes(formData.time)) {
-            return [...prev, formData.time];
+          // Normalize all existing slots for comparison
+          const normalizedPrev = prev.map(slot => String(slot).trim());
+          // Check if already exists (normalized comparison)
+          const exists = normalizedPrev.some(slot => slot === bookedTimeNormalized);
+          if (!exists) {
+            // Return new array with the booked slot added
+            return [...prev, bookedTimeNormalized];
           }
           return prev;
         });
         
-        // Refresh booked slots from calendar to get the latest state
-        // This ensures we have the most up-to-date list
+        // Small delay to ensure React processes the state update before async operation
+        await new Promise(resolve => setTimeout(resolve, 0));
+        
+        calendarEventId = await createCalendarEvent(formData, bookingId);
+        toast.success('Calendar event created');
+        
+        // Refresh booked slots from calendar after a delay to sync with API
+        // This ensures we have the most up-to-date list from the API
         if (formData.date) {
-          // Use a small delay to ensure calendar API has updated
+          // Use a delay to ensure calendar API has fully processed the event
           setTimeout(async () => {
             try {
               const updatedSlots = await getAvailableSlots(formData.date!);
-              setBookedSlots(updatedSlots);
+              // Replace with API response - the API should now include the newly created event
+              // If the event hasn't propagated yet, ensure we still include the booked slot
+              const normalizedApiSlots = updatedSlots.map((slot: string) => slot.trim());
+              const slotExistsInAPI = normalizedApiSlots.includes(bookedTimeNormalized);
+              
+              if (slotExistsInAPI) {
+                // API has the slot, use API data directly
+                setBookedSlots(normalizedApiSlots);
+              } else {
+                // API doesn't have it yet (propagation delay), merge with optimistic update
+                setBookedSlots((prev) => {
+                  const normalizedPrev = prev.map(slot => String(slot).trim());
+                  const allSlots = [...normalizedApiSlots, ...normalizedPrev, bookedTimeNormalized];
+                  return [...new Set(allSlots)];
+                });
+              }
             } catch (error) {
-              // If refresh fails, the optimistic update above will keep the slot marked as booked
+              // If refresh fails, ensure the booked slot stays in the list
               console.error('Error refreshing slots after booking:', error);
+              setBookedSlots((prev) => {
+                const normalizedPrev = prev.map(slot => String(slot).trim());
+                const exists = normalizedPrev.some(slot => slot === bookedTimeNormalized);
+                if (!exists) {
+                  return [...prev, bookedTimeNormalized];
+                }
+                return prev;
+              });
             }
-          }, 1000); // 1 second delay to allow calendar API to update
+          }, 2000); // 2 second delay to allow calendar API to fully propagate the event
         }
       } catch (error) {
         console.error('Calendar event creation failed:', error);
@@ -142,6 +214,7 @@ export default function BookingPage() {
       try {
         await sendConfirmationEmail({
           bookingId,
+          appointmentType: formData.appointmentType as 'online' | 'offline',
           parentFirstName: formData.parentFirstName,
           parentLastName: formData.parentLastName,
           childFirstName: formData.childFirstName,
@@ -165,6 +238,7 @@ export default function BookingPage() {
       try {
         await appendBookingToSheet({
           bookingId,
+          appointmentType: formData.appointmentType as 'online' | 'offline',
           parentFirstName: formData.parentFirstName,
           parentLastName: formData.parentLastName,
           childFirstName: formData.childFirstName,
@@ -187,6 +261,7 @@ export default function BookingPage() {
       // Set confirmation data
       setBookingConfirmation({
         bookingId,
+        appointmentType: formData.appointmentType as 'online' | 'offline',
         parentFirstName: formData.parentFirstName,
         parentLastName: formData.parentLastName,
         childFirstName: formData.childFirstName,
@@ -212,7 +287,12 @@ export default function BookingPage() {
   };
 
   const handleBookAnother = () => {
+    // Store the current date before clearing form
+    const currentDate = formData.date;
+    
+    // Clear all form data and state
     setFormData({
+      appointmentType: '',
       parentFirstName: '',
       parentLastName: '',
       childFirstName: '',
@@ -226,9 +306,11 @@ export default function BookingPage() {
       time: ''
     });
     setErrors({});
-    setBookedSlots([]); // Clear booked slots when starting new booking
+    // Don't clear bookedSlots here - preserve them so recently booked slots stay hidden
+    // They will be cleared when a new date is selected or appointment type changes
     setStep('form');
     setBookingConfirmation(null);
+    // Note: When user selects a date again, the useEffect will merge API slots with existing bookedSlots
   };
 
   if (step === 'confirmation' && bookingConfirmation) {
@@ -329,9 +411,16 @@ export default function BookingPage() {
               Select Date & Time
             </h2>
             <div className="space-y-8">
+              <AppointmentTypeSelector
+                appointmentType={formData.appointmentType}
+                onTypeSelect={handleAppointmentTypeSelect}
+                error={errors.appointmentType}
+              />
+              
               <DatePicker
                 selectedDate={formData.date}
                 onDateSelect={handleDateSelect}
+                appointmentType={formData.appointmentType}
                 error={errors.date}
               />
               

@@ -1,5 +1,5 @@
 import { BookingFormData } from '../types/booking.types';
-import { timeStringToDate } from '../utils/dateHelpers';
+import { timeStringToDate, formatDateForAPI } from '../utils/dateHelpers';
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3001/api';
 
@@ -17,7 +17,7 @@ export const createCalendarEvent = async (
 
     const appointmentDateTime = timeStringToDate(bookingData.date, bookingData.time);
     const endDateTime = new Date(appointmentDateTime);
-    endDateTime.setMinutes(endDateTime.getMinutes() + 30); // 30-minute appointment
+    endDateTime.setMinutes(endDateTime.getMinutes() + 15); // 15-minute appointment
 
     const response = await fetch(`${API_BASE_URL}/calendar/events`, {
       method: 'POST',
@@ -25,9 +25,10 @@ export const createCalendarEvent = async (
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        summary: `Appointment: ${bookingData.childFirstName} ${bookingData.childLastName} - Milestones Child Clinic`,
+        summary: `Appointment (${bookingData.appointmentType === 'online' ? 'Online' : 'Offline'}): ${bookingData.childFirstName} ${bookingData.childLastName} - Milestones Child Clinic`,
         description: `
 Booking ID: ${bookingId}
+Appointment Type: ${bookingData.appointmentType === 'online' ? 'Online' : 'Offline'}
 Parent Name: ${bookingData.parentFirstName} ${bookingData.parentLastName}
 Child Name: ${bookingData.childFirstName} ${bookingData.childLastName}
 Age: ${bookingData.age} years
@@ -62,10 +63,15 @@ Phone: +91 98765 43210
  */
 export const getAvailableSlots = async (date: Date): Promise<string[]> => {
   try {
-    const dateStr = date.toISOString().split('T')[0]; // YYYY-MM-DD format
+    // Format date as YYYY-MM-DD using local date components to avoid timezone shift
+    // Using toISOString() can shift the date by one day due to UTC conversion
+    const dateStr = formatDateForAPI(date);
+    
+    // Add cache-busting timestamp to ensure we always get fresh data
+    const timestamp = new Date().getTime();
 
     const response = await fetch(
-      `${API_BASE_URL}/calendar/availability?date=${dateStr}`
+      `${API_BASE_URL}/calendar/availability?date=${dateStr}&_t=${timestamp}`
     );
 
     if (!response.ok) {
@@ -74,7 +80,9 @@ export const getAvailableSlots = async (date: Date): Promise<string[]> => {
     }
 
     const data = await response.json();
-    return data.bookedSlots || [];
+    // Normalize booked slots to ensure consistent format (trim and ensure HH:MM format)
+    const normalizedSlots = (data.bookedSlots || []).map((slot: string) => slot.trim());
+    return normalizedSlots;
   } catch (error) {
     console.error('Error fetching available slots:', error);
     // Return empty array on error to allow booking to continue
