@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import { User, Baby, Mail, Phone, FileText, Calendar } from 'lucide-react';
 import { BookingFormData, FormErrors } from '../../types/booking.types';
 import {
-  validateParentName,
-  validateChildName,
   validateAge,
   validateDateOfBirth,
   validateEmail,
@@ -40,55 +38,107 @@ export function BookingForm({
 
   return (
     <div className="space-y-6">
-      {/* Parent Name */}
+      {/* Parent First Name */}
       <div>
-        <label htmlFor="parentName" className="block text-sm text-[#3a3a3a] mb-2 font-medium">
-          Parent's Name <span className="text-red-500">*</span>
+        <label htmlFor="parentFirstName" className="block text-sm text-[#3a3a3a] mb-2 font-medium">
+          Parent's First Name <span className="text-red-500">*</span>
         </label>
         <div className="relative">
           <User className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#7a7a7a]" />
           <input
             type="text"
-            id="parentName"
-            value={formData.parentName}
-            onChange={(e) => handleChange('parentName', e.target.value)}
-            onBlur={() => handleBlur('parentName')}
+            id="parentFirstName"
+            value={formData.parentFirstName}
+            onChange={(e) => handleChange('parentFirstName', e.target.value)}
+            onBlur={() => handleBlur('parentFirstName')}
             className={`w-full pl-12 pr-4 py-3 rounded-xl border ${
-              errors.parentName && touched.parentName
+              errors.parentFirstName && touched.parentFirstName
                 ? 'border-red-500'
                 : 'border-[rgba(107,77,124,0.2)]'
             } bg-white focus:outline-none focus:ring-2 focus:ring-[#6B4D7C] focus:border-transparent`}
-            placeholder="Enter parent's full name"
+            placeholder="Enter parent's first name"
           />
         </div>
-        {errors.parentName && touched.parentName && (
-          <p className="mt-1 text-sm text-red-500">{errors.parentName}</p>
+        {errors.parentFirstName && touched.parentFirstName && (
+          <p className="mt-1 text-sm text-red-500">{errors.parentFirstName}</p>
         )}
       </div>
 
-      {/* Child Name */}
+      {/* Parent Last Name */}
       <div>
-        <label htmlFor="childName" className="block text-sm text-[#3a3a3a] mb-2 font-medium">
-          Child's Name <span className="text-red-500">*</span>
+        <label htmlFor="parentLastName" className="block text-sm text-[#3a3a3a] mb-2 font-medium">
+          Parent's Last Name <span className="text-red-500">*</span>
+        </label>
+        <div className="relative">
+          <User className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#7a7a7a]" />
+          <input
+            type="text"
+            id="parentLastName"
+            value={formData.parentLastName}
+            onChange={(e) => handleChange('parentLastName', e.target.value)}
+            onBlur={() => handleBlur('parentLastName')}
+            className={`w-full pl-12 pr-4 py-3 rounded-xl border ${
+              errors.parentLastName && touched.parentLastName
+                ? 'border-red-500'
+                : 'border-[rgba(107,77,124,0.2)]'
+            } bg-white focus:outline-none focus:ring-2 focus:ring-[#6B4D7C] focus:border-transparent`}
+            placeholder="Enter parent's last name"
+          />
+        </div>
+        {errors.parentLastName && touched.parentLastName && (
+          <p className="mt-1 text-sm text-red-500">{errors.parentLastName}</p>
+        )}
+      </div>
+
+      {/* Child First Name */}
+      <div>
+        <label htmlFor="childFirstName" className="block text-sm text-[#3a3a3a] mb-2 font-medium">
+          Child's First Name <span className="text-red-500">*</span>
         </label>
         <div className="relative">
           <Baby className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#7a7a7a]" />
           <input
             type="text"
-            id="childName"
-            value={formData.childName}
-            onChange={(e) => handleChange('childName', e.target.value)}
-            onBlur={() => handleBlur('childName')}
+            id="childFirstName"
+            value={formData.childFirstName}
+            onChange={(e) => handleChange('childFirstName', e.target.value)}
+            onBlur={() => handleBlur('childFirstName')}
             className={`w-full pl-12 pr-4 py-3 rounded-xl border ${
-              errors.childName && touched.childName
+              errors.childFirstName && touched.childFirstName
                 ? 'border-red-500'
                 : 'border-[rgba(107,77,124,0.2)]'
             } bg-white focus:outline-none focus:ring-2 focus:ring-[#6B4D7C] focus:border-transparent`}
-            placeholder="Enter child's full name"
+            placeholder="Enter child's first name"
           />
         </div>
-        {errors.childName && touched.childName && (
-          <p className="mt-1 text-sm text-red-500">{errors.childName}</p>
+        {errors.childFirstName && touched.childFirstName && (
+          <p className="mt-1 text-sm text-red-500">{errors.childFirstName}</p>
+        )}
+      </div>
+
+      {/* Child Last Name */}
+      <div>
+        <label htmlFor="childLastName" className="block text-sm text-[#3a3a3a] mb-2 font-medium">
+          Child's Last Name <span className="text-red-500">*</span>
+        </label>
+        <div className="relative">
+          <Baby className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#7a7a7a]" />
+          <input
+            type="text"
+            id="childLastName"
+            value={formData.childLastName}
+            onChange={(e) => handleChange('childLastName', e.target.value)}
+            onBlur={() => handleBlur('childLastName')}
+            className={`w-full pl-12 pr-4 py-3 rounded-xl border ${
+              errors.childLastName && touched.childLastName
+                ? 'border-red-500'
+                : 'border-[rgba(107,77,124,0.2)]'
+            } bg-white focus:outline-none focus:ring-2 focus:ring-[#6B4D7C] focus:border-transparent`}
+            placeholder="Enter child's last name"
+          />
+        </div>
+        {errors.childLastName && touched.childLastName && (
+          <p className="mt-1 text-sm text-red-500">{errors.childLastName}</p>
         )}
       </div>
 
@@ -136,7 +186,7 @@ export function BookingForm({
                 ? 'border-red-500'
                 : 'border-[rgba(107,77,124,0.2)]'
             } bg-white focus:outline-none focus:ring-2 focus:ring-[#6B4D7C] focus:border-transparent`}
-            placeholder="e.g., 5 years, 2 months"
+            placeholder="Format to enter age: year/month. Eg: 5/10 for 5 years and 10 months"
           />
         </div>
         {errors.age && touched.age && (

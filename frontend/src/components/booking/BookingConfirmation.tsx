@@ -13,7 +13,8 @@ export function BookingConfirmation({ bookingData, onBookAnother }: BookingConfi
   };
 
   const handleShareWhatsApp = () => {
-    const message = `Appointment Confirmed!\n\nBooking ID: ${bookingData.bookingId}\nChild: ${bookingData.childName}\nDate: ${formatDateDisplay(bookingData.appointmentDate)}\nTime: ${formatTimeDisplay(bookingData.appointmentTime)}\n\nMilestones Child Clinic`;
+    const childFullName = `${bookingData.childFirstName} ${bookingData.childLastName}`;
+    const message = `Appointment Confirmed!\n\nBooking ID: ${bookingData.bookingId}\nChild: ${childFullName}\nDate: ${formatDateDisplay(bookingData.appointmentDate)}\nTime: ${formatTimeDisplay(bookingData.appointmentTime)}\n\nMilestones Child Clinic`;
     const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
   };
@@ -73,7 +74,7 @@ export function BookingConfirmation({ bookingData, onBookAnother }: BookingConfi
               <div>
                 <p className="text-sm text-[#7a7a7a] mb-1">Parent Name</p>
                 <p className="text-lg text-[#3a3a3a] font-medium">
-                  {bookingData.parentName}
+                  {bookingData.parentFirstName} {bookingData.parentLastName}
                 </p>
               </div>
             </div>
@@ -85,7 +86,7 @@ export function BookingConfirmation({ bookingData, onBookAnother }: BookingConfi
               <div>
                 <p className="text-sm text-[#7a7a7a] mb-1">Child Name</p>
                 <p className="text-lg text-[#3a3a3a] font-medium">
-                  {bookingData.childName}
+                  {bookingData.childFirstName} {bookingData.childLastName}
                 </p>
                 <p className="text-sm text-[#7a7a7a] mt-1">
                   Age: {bookingData.age}

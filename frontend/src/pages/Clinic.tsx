@@ -1,3 +1,4 @@
+import React from 'react';
 import { GallerySection } from '../components/GallerySection';
 import { TestimonialsSection } from '../components/TestimonialsSection';
 import { MapPin, Phone, Clock, Heart, Stethoscope, Syringe, Baby, Shield, Activity } from 'lucide-react';
@@ -127,24 +128,28 @@ export default function Clinic() {
                 </div>
                 <div className="space-y-4">
                   <div className="flex justify-between items-center py-3 border-b border-[rgba(107,77,124,0.1)]">
-                    <span className="text-[#3a3a3a]">Monday - Friday</span>
+                    <span className="text-[#3a3a3a]">
+                      Monday, Wednesday and Friday
+                    </span>
                     <div className="text-right">
                       <span className="text-[#6B4D7C] block">
                         7:00 PM - 9:00 PM
                       </span>
                       <span className="text-[#7a7a7a] text-xs font-medium">
-                        By Appointment Only
+                        ONLINE MODE ONLY
                       </span>
                     </div>
                   </div>
                   <div className="flex justify-between items-center py-3 border-b border-[rgba(107,77,124,0.1)]">
-                    <span className="text-[#3a3a3a]">Saturday</span>
+                    <span className="text-[#3a3a3a]">
+                      Tuesday, Thursday and Saturday
+                    </span>
                     <div className="text-right">
                       <span className="text-[#6B4D7C] block">
                         7:00 PM - 9:00 PM
                       </span>
                       <span className="text-[#7a7a7a] text-xs font-medium">
-                        By Appointment Only
+                        CLINIC VISIT ONLY
                       </span>
                     </div>
                   </div>
@@ -152,17 +157,15 @@ export default function Clinic() {
                     <span className="text-[#3a3a3a]">Sunday</span>
                     <div className="text-right">
                       <span className="text-[#6B4D7C] block">
-                        7:00 PM - 9:00 PM
+                        No Appointments on Sundays
                       </span>
-                      <span className="text-[#7a7a7a] text-xs font-medium">
-                        By Appointment Only
-                      </span>
+                      <span className="text-[#7a7a7a] text-xs font-medium"></span>
                     </div>
                   </div>
-                  <div className="flex justify-between items-center py-3">
+                  {/* <div className="flex justify-between items-center py-3">
                     <span className="text-[#3a3a3a]">Emergency</span>
                     <span className="text-[#6B4D7C]">24/7 Available</span>
-                  </div>
+                  </div> */}
                 </div>
               </div>
 
@@ -176,9 +179,9 @@ export default function Clinic() {
                 <p className="text-[#7a7a7a] text-sm leading-relaxed mb-4">
                   Milestones Child Clinic
                   <br />
-                  123 Marine Drive, Churchgate
+                  G-2, Princeton Building, NS Road No. 10
                   <br />
-                  Mumbai, Maharashtra 400020
+                  Sainath Nagar, Mumbai - 400 049
                   <br />
                   India
                 </p>
@@ -203,13 +206,13 @@ export default function Clinic() {
                   <div>
                     <p className="text-[#7a7a7a] mb-1">Main Line</p>
                     <a
-                      href="tel:+919876543210"
+                      href="tel:+919137169856"
                       className="text-[#6B4D7C] hover:underline"
                     >
-                      +91 98765 43210
+                      +91 91371 69856
                     </a>
                   </div>
-                  <div>
+                  {/* <div>
                     <p className="text-[#7a7a7a] mb-1">Emergency</p>
                     <a
                       href="tel:+919876543211"
@@ -217,7 +220,7 @@ export default function Clinic() {
                     >
                       +91 98765 43211
                     </a>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>

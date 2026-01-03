@@ -20,10 +20,10 @@ export const sendConfirmationEmail = async (
     const emailjs = await import('@emailjs/browser');
 
     const templateParams = {
-      to_name: bookingData.parentName,
+      to_name: `${bookingData.parentFirstName} ${bookingData.parentLastName}`,
       to_email: bookingData.email,
       booking_id: bookingData.bookingId,
-      child_name: bookingData.childName,
+      child_name: `${bookingData.childFirstName} ${bookingData.childLastName}`,
       appointment_date: formatDateDisplay(bookingData.appointmentDate),
       appointment_time: formatTimeDisplay(bookingData.appointmentTime),
       reason: bookingData.reason,
@@ -67,11 +67,11 @@ export const generateICSFile = (bookingData: BookingConfirmation): string => {
     `DTEND:${formatICSDate(endDate)}`,
     `DTSTAMP:${formatICSDate(new Date())}`,
     `UID:${bookingData.bookingId}@milestoneschildclinic.com`,
-    `SUMMARY:Appointment - ${bookingData.childName}`,
-    `DESCRIPTION:Booking ID: ${bookingData.bookingId}\\nParent: ${bookingData.parentName}\\nChild: ${bookingData.childName}\\nReason: ${bookingData.reason}`,
+    `SUMMARY:Appointment - ${bookingData.childFirstName} ${bookingData.childLastName}`,
+    `DESCRIPTION:Booking ID: ${bookingData.bookingId}\\nParent: ${bookingData.parentFirstName} ${bookingData.parentLastName}\\nChild: ${bookingData.childFirstName} ${bookingData.childLastName}\\nReason: ${bookingData.reason}`,
     `LOCATION:Milestones Child Clinic, 123 Marine Drive, Churchgate, Mumbai, Maharashtra 400020`,
     `ORGANIZER;CN=Milestones Child Clinic:mailto:info@milestoneschildclinic.com`,
-    `ATTENDEE;CN=${bookingData.parentName};RSVP=TRUE:mailto:${bookingData.email}`,
+    `ATTENDEE;CN=${bookingData.parentFirstName} ${bookingData.parentLastName};RSVP=TRUE:mailto:${bookingData.email}`,
     'STATUS:CONFIRMED',
     'SEQUENCE:0',
     'BEGIN:VALARM',

@@ -60,8 +60,10 @@ export const formatBookingForSheets = (bookingData: any): any[] => {
   return [
     timestamp,
     bookingData.bookingId,
-    bookingData.parentName,
-    bookingData.childName,
+    bookingData.parentFirstName,
+    bookingData.parentLastName,
+    bookingData.childFirstName,
+    bookingData.childLastName,
     bookingData.age,
     bookingData.dateOfBirth || '',
     bookingData.email,

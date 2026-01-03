@@ -1,3 +1,4 @@
+import React from 'react';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Calendar, Loader2 } from 'lucide-react';
@@ -25,8 +26,10 @@ export default function BookingPage() {
   const [bookingConfirmation, setBookingConfirmation] = useState<BookingConfirmationType | null>(null);
 
   const [formData, setFormData] = useState<BookingFormData>({
-    parentName: '',
-    childName: '',
+    parentFirstName: '',
+    parentLastName: '',
+    childFirstName: '',
+    childLastName: '',
     age: '',
     dateOfBirth: '',
     email: '',
@@ -139,8 +142,10 @@ export default function BookingPage() {
       try {
         await sendConfirmationEmail({
           bookingId,
-          parentName: formData.parentName,
-          childName: formData.childName,
+          parentFirstName: formData.parentFirstName,
+          parentLastName: formData.parentLastName,
+          childFirstName: formData.childFirstName,
+          childLastName: formData.childLastName,
           age: formData.age,
           dateOfBirth: formData.dateOfBirth,
           email: formData.email,
@@ -160,8 +165,10 @@ export default function BookingPage() {
       try {
         await appendBookingToSheet({
           bookingId,
-          parentName: formData.parentName,
-          childName: formData.childName,
+          parentFirstName: formData.parentFirstName,
+          parentLastName: formData.parentLastName,
+          childFirstName: formData.childFirstName,
+          childLastName: formData.childLastName,
           age: formData.age,
           dateOfBirth: formData.dateOfBirth,
           email: formData.email,
@@ -180,8 +187,10 @@ export default function BookingPage() {
       // Set confirmation data
       setBookingConfirmation({
         bookingId,
-        parentName: formData.parentName,
-        childName: formData.childName,
+        parentFirstName: formData.parentFirstName,
+        parentLastName: formData.parentLastName,
+        childFirstName: formData.childFirstName,
+        childLastName: formData.childLastName,
         age: formData.age,
         dateOfBirth: formData.dateOfBirth,
         email: formData.email,
@@ -204,8 +213,10 @@ export default function BookingPage() {
 
   const handleBookAnother = () => {
     setFormData({
-      parentName: '',
-      childName: '',
+      parentFirstName: '',
+      parentLastName: '',
+      childFirstName: '',
+      childLastName: '',
       age: '',
       dateOfBirth: '',
       email: '',

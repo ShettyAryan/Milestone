@@ -1,6 +1,8 @@
 export interface BookingFormData {
-  parentName: string;
-  childName: string;
+  parentFirstName: string;
+  parentLastName: string;
+  childFirstName: string;
+  childLastName: string;
   age: string;
   dateOfBirth: string;
   email: string;
@@ -18,8 +20,10 @@ export interface TimeSlot {
 
 export interface BookingConfirmation {
   bookingId: string;
-  parentName: string;
-  childName: string;
+  parentFirstName: string;
+  parentLastName: string;
+  childFirstName: string;
+  childLastName: string;
   age: string;
   dateOfBirth: string;
   email: string;
@@ -31,8 +35,10 @@ export interface BookingConfirmation {
 }
 
 export interface FormErrors {
-  parentName?: string;
-  childName?: string;
+  parentFirstName?: string;
+  parentLastName?: string;
+  childFirstName?: string;
+  childLastName?: string;
   age?: string;
   dateOfBirth?: string;
   email?: string;

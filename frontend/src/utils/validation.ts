@@ -1,21 +1,21 @@
 import { BookingFormData, FormErrors } from '../types/booking.types';
 
-export const validateParentName = (name: string): string | undefined => {
+export const validateFirstName = (name: string, fieldName: string = 'First name'): string | undefined => {
   if (!name || name.trim().length === 0) {
-    return 'Parent name is required';
+    return `${fieldName} is required`;
   }
   if (name.trim().length < 2) {
-    return 'Parent name must be at least 2 characters';
+    return `${fieldName} must be at least 2 characters`;
   }
   return undefined;
 };
 
-export const validateChildName = (name: string): string | undefined => {
+export const validateLastName = (name: string, fieldName: string = 'Last name'): string | undefined => {
   if (!name || name.trim().length === 0) {
-    return "Child's name is required";
+    return `${fieldName} is required`;
   }
   if (name.trim().length < 2) {
-    return "Child's name must be at least 2 characters";
+    return `${fieldName} must be at least 2 characters`;
   }
   return undefined;
 };
@@ -122,11 +122,17 @@ export const validateTime = (time: string): string | undefined => {
 export const validateBookingForm = (formData: BookingFormData): FormErrors => {
   const errors: FormErrors = {};
   
-  const parentNameError = validateParentName(formData.parentName);
-  if (parentNameError) errors.parentName = parentNameError;
+  const parentFirstNameError = validateFirstName(formData.parentFirstName, "Parent's first name");
+  if (parentFirstNameError) errors.parentFirstName = parentFirstNameError;
   
-  const childNameError = validateChildName(formData.childName);
-  if (childNameError) errors.childName = childNameError;
+  const parentLastNameError = validateLastName(formData.parentLastName, "Parent's last name");
+  if (parentLastNameError) errors.parentLastName = parentLastNameError;
+  
+  const childFirstNameError = validateFirstName(formData.childFirstName, "Child's first name");
+  if (childFirstNameError) errors.childFirstName = childFirstNameError;
+  
+  const childLastNameError = validateLastName(formData.childLastName, "Child's last name");
+  if (childLastNameError) errors.childLastName = childLastNameError;
   
   const ageError = validateAge(formData.age);
   if (ageError) errors.age = ageError;

@@ -25,11 +25,11 @@ export const createCalendarEvent = async (
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        summary: `Appointment: ${bookingData.childName} - Milestones Child Clinic`,
+        summary: `Appointment: ${bookingData.childFirstName} ${bookingData.childLastName} - Milestones Child Clinic`,
         description: `
 Booking ID: ${bookingId}
-Parent Name: ${bookingData.parentName}
-Child Name: ${bookingData.childName}
+Parent Name: ${bookingData.parentFirstName} ${bookingData.parentLastName}
+Child Name: ${bookingData.childFirstName} ${bookingData.childLastName}
 Age: ${bookingData.age} years
 Phone: ${bookingData.phone}
 Email: ${bookingData.email}

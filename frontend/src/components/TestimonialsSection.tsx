@@ -1,4 +1,5 @@
-import { Star, Quote } from 'lucide-react';
+import React from 'react';
+import { Star, Quote, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useState, useRef, useEffect } from 'react';
 
 const testimonials = [
@@ -34,7 +35,7 @@ const testimonials = [
   }
 ];
 
-export function TestimonialsSection() {
+export function TestimonialsSection(){
   const scrollRef = useRef<HTMLDivElement>(null);
   const [centerIndex, setCenterIndex] = useState(1);
   const autoScrollRef = useRef<number | null>(null);
@@ -137,6 +138,32 @@ export function TestimonialsSection() {
     setIsPaused(false);
   };
 
+  const scrollLeft = () => {
+    if (scrollRef.current) {
+      const container = scrollRef.current;
+      const cardWidth = 380;
+      const gap = 32;
+      const scrollAmount = cardWidth + gap;
+      container.scrollBy({
+        left: -scrollAmount,
+        behavior: 'smooth'
+      });
+    }
+  };
+
+  const scrollRight = () => {
+    if (scrollRef.current) {
+      const container = scrollRef.current;
+      const cardWidth = 380;
+      const gap = 32;
+      const scrollAmount = cardWidth + gap;
+      container.scrollBy({
+        left: scrollAmount,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return (
     <section className="py-16 px-4 bg-[#FFF8F9] relative overflow-hidden">
       {/* Background gradient accent */}
@@ -155,20 +182,42 @@ export function TestimonialsSection() {
           </p>
         </div>
 
-        {/* Testimonials Carousel */}
-        <div 
-          ref={scrollRef}
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-          className="flex gap-8 overflow-x-auto pb-8 scrollbar-hide"
-          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-        >
-          {testimonials.map((testimonial, index) => {
+        {/* Testimonials Carousel Container with Navigation */}
+        <div className="relative">
+          {/* Left Arrow Button */}
+          <button
+            onClick={scrollLeft}
+            onMouseEnter={handleMouseEnter}
+            className="absolute left-0 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-white border-2 border-[rgba(107,77,124,0.2)] shadow-lg flex items-center justify-center hover:bg-[#6B4D7C] hover:border-[#6B4D7C] transition-all duration-200 group"
+            aria-label="Scroll left"
+          >
+            <ChevronLeft className="w-6 h-6 text-[#6B4D7C] group-hover:text-white transition-colors" />
+          </button>
+
+          {/* Right Arrow Button */}
+          <button
+            onClick={scrollRight}
+            onMouseEnter={handleMouseEnter}
+            className="absolute right-0 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-white border-2 border-[rgba(107,77,124,0.2)] shadow-lg flex items-center justify-center hover:bg-[#6B4D7C] hover:border-[#6B4D7C] transition-all duration-200 group"
+            aria-label="Scroll right"
+          >
+            <ChevronRight className="w-6 h-6 text-[#6B4D7C] group-hover:text-white transition-colors" />
+          </button>
+
+          {/* Testimonials Carousel */}
+          <div 
+            ref={scrollRef}
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+            className="flex gap-8 overflow-x-auto pb-8 scrollbar-hide px-14"
+            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+          >
+            {testimonials.map((testimonial, index) => {
             const isCenter = index === centerIndex;
             return (
               <div
                 key={index}
-                className={`flex-shrink-0 w-[380px] transition-all duration-500 ${
+                className={`shrink-0 w-[380px] transition-all duration-500 p-5 ${
                   isCenter ? 'md:scale-105 md:opacity-100 opacity-100' : 'md:scale-95 md:opacity-70 opacity-100'
                 }`}
               >
@@ -198,7 +247,8 @@ export function TestimonialsSection() {
                 </div>
               </div>
             );
-          })}
+            })}
+          </div>
         </div>
       </div>
     </section>
