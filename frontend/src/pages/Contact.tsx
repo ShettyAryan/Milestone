@@ -173,7 +173,7 @@ export default function Contact() {
             {/* Map Section */}
             <div className="bg-white rounded-3xl overflow-hidden border border-[rgba(107,77,124,0.15)] shadow-lg">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3769.8284855221186!2d72.8297091!3d19.1151788!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c9dd3461d9c1%3A0xa3b41636086d822d!2sPrinceton%20building!5e0!3m2!1sen!2sin!4v1766335789147!5m2!1sen!2sin"
+                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d942.457758733833!2d72.8289112!3d19.115067!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c94dbaa28cb9%3A0xe99a0e4fce5af182!2sMilestones%20-%20Dr.%20Vinay%20Joshi%E2%80%99s%20Child%20Clinic!5e0!3m2!1sen!2sin!4v1767442200333!5m2!1sen!2sin"
                 width="100%"
                 height="100%"
                 style={{ border: 0, minHeight: "350px" }}

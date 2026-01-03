@@ -1,3 +1,4 @@
+import React from 'react';
 import { Heart, Facebook, Instagram, Twitter, Mail, Phone, MapPin } from 'lucide-react';
 import { Logo } from './Logo';
 
@@ -109,8 +110,8 @@ export function FooterSection() {
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="w-5 h-5 text-[#CFEDEA] flex-shrink-0" />
-                <a href="mailto:info@milestonesclinic.com" className="text-[rgba(255,255,255,0.7)] hover:text-[#CFEDEA] transition-colors">
-                  info@milestonesclinic.com
+                <a href="mailto:admin@milestoneschildclinic.com" className="text-[rgba(255,255,255,0.7)] hover:text-[#CFEDEA] transition-colors">
+                  admin@milestoneschildclinic.com
                 </a>
               </li>
             </ul>

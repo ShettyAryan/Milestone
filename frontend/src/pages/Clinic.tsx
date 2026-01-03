@@ -186,7 +186,7 @@ export default function Clinic() {
                   India
                 </p>
                 <a
-                  href="https://www.google.com/maps/place/Princeton+building/@19.1151788,72.8297091,17z/data=!3m1!4b1!4m6!3m5!1s0x3be7c9dd3461d9c1:0xa3b41636086d822d!8m2!3d19.1151788!4d72.832284!16s%2Fg%2F11c5q8h0wz?entry=ttu&g_ep=EgoyMDI1MDEyMS4wIKXMDSoASAFQAw%3D%3D"
+                  href="https://maps.app.goo.gl/JJEMyDiDovKMRBAa8"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full px-6 py-3 bg-[#6B4D7C] text-white rounded-full hover:bg-[#5a3d6a] transition-colors text-sm block text-center"
