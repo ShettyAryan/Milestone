@@ -86,30 +86,30 @@ export default function Clinic() {
                   </h4>
                   <ul className="space-y-2">
                     <li className="flex items-start gap-2">
-                      <div className="w-1.5 h-1.5 rounded-full bg-[#6B4D7C] mt-2 flex-shrink-0" />
+                      <div className="w-1.5 h-1.5 rounded-full bg-[#6B4D7C] mt-2 shrink-0" />
                       <span>
                         Modern examination rooms with child-friendly decor
                       </span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <div className="w-1.5 h-1.5 rounded-full bg-[#6B4D7C] mt-2 flex-shrink-0" />
+                      <div className="w-1.5 h-1.5 rounded-full bg-[#6B4D7C] mt-2 shrink-0" />
                       <span>
                         Dedicated vaccination room with proper cold chain
                         storage
                       </span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <div className="w-1.5 h-1.5 rounded-full bg-[#6B4D7C] mt-2 flex-shrink-0" />
+                      <div className="w-1.5 h-1.5 rounded-full bg-[#6B4D7C] mt-2 shrink-0" />
                       <span>Comfortable waiting area with toys and books</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <div className="w-1.5 h-1.5 rounded-full bg-[#6B4D7C] mt-2 flex-shrink-0" />
+                      <div className="w-1.5 h-1.5 rounded-full bg-[#6B4D7C] mt-2 shrink-0" />
                       <span>
                         Private consultation spaces for sensitive discussions
                       </span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <div className="w-1.5 h-1.5 rounded-full bg-[#6B4D7C] mt-2 flex-shrink-0" />
+                      <div className="w-1.5 h-1.5 rounded-full bg-[#6B4D7C] mt-2 shrink-0" />
                       <span>Wheelchair accessible premises</span>
                     </li>
                   </ul>
