@@ -153,3 +153,16 @@ export const isTimeSlotInPast = (date: Date, time: string): boolean => {
   return slotTime < now;
 };
 
+
+/**
+ * Format a blog post's publish date (e.g. "15 March 2024")
+ */
+export const formatPostDate = (isoDate: string): string => {
+  if (!isoDate) return '';
+
+  return new Date(isoDate).toLocaleDateString('en-IN', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  });
+};

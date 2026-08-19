@@ -1,0 +1,24 @@
+{
+  "name": "milestones-clinic-studio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Sanity Studio for the Milestones Child Clinic blog",
+  "type": "module",
+  "scripts": {
+    "dev": "sanity dev",
+    "build": "sanity build",
+    "deploy": "sanity deploy",
+    "manage": "sanity manage"
+  },
+  "dependencies": {
+    "@sanity/vision": "^6.10.1",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "sanity": "^6.10.1",
+    "styled-components": "^6.5.3"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.2",
+    "typescript": "^5.6.3"
+  }
+}
